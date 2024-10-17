@@ -1,6 +1,11 @@
 from ftfy import fix_text
-import unidecode
+from unidecode import unidecode
 from nltk.stem import WordNetLemmatizer as wnl
+## TODO: confirm nltk data is downloaded as needed
+import datetime
+
+def clean_text(text: str) -> str:
+    return lemmatize(remove_whitespace(replace_non_ascii(replace_html_chars(text))))
 
 ## Clean up HTML special characters
 def replace_html_chars(text: str) -> str:
