@@ -2,9 +2,7 @@ import json
 from tweet import Tweet
 from user import User
 
-if __name__ == "__main__":
-    JSON_FILE = "gg2013.json"
-
+def read_tweet_data(json_file: str):
     users = {}
     tweets = {}
 
@@ -26,6 +24,12 @@ if __name__ == "__main__":
             
             tweet = Tweet(raw_text, users[user_id], tweet_id, timestamp_ms)
             tweets[tweet_id] = tweet
+    
+    return (tweets, users)
 
-    print(tweets[tweet_dict["id"]].clean_text)
+
+if __name__ == "__main__":
+    JSON_FILE = "gg2013.json"
+
+    tweets, users = read_tweet_data(JSON_FILE)
     
