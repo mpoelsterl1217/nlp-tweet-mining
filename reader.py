@@ -6,7 +6,7 @@ def read_tweet_data(json_file: str):
     users = {}
     tweets = {}
 
-    with open(JSON_FILE) as file:
+    with open(json_file) as file:
         tweets_json = json.load(file)
         for tweet_dict in tweets_json:
             ## Tweet is dict with keys "text", "user", "id", "timestamp_ms"
