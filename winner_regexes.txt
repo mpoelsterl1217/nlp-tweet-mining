@@ -1,1 +1,5 @@
-(.+) (win|wins|won|takes home|took home|got|gets|goes home with|went home with|was awarded|is awarded|is given|was given) [AWARD NAME](.+)
+(.+) (win|wins|won|takes home|took home|got|gets|goes home with|went home with|was awarded|is awarded|is given|was given|accepts|accepted) [AWARD NAME](.+)
+(congrats|congratulations) to (.+) on (his|her|their) [AWARD NAME] win(.+)
+(.+) (win|wins|won|takes home|took home|got|gets|goes home with|went home with|was awarded|is awarded|is given|was given|accepts|accepted) the golden globe for [AWARD NAME](.+)
+(congrats|congratulations) to (.+) for winning [AWARD NAME](.+)
+[AWARD NAME] goes to (.+)

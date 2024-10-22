@@ -14,8 +14,8 @@ def identify_winner(award_name, nominees):
     matches = defaultdict(int)
     json = "gg2013.json"
     tweets, _ = read_tweet_data(json)
-    for regex in regexes:
-        regex = regex.replace("[AWARD NAME]", award_name)
+    for r in regexes:
+        regex = r.replace("[AWARD NAME]", award_name)[0:-1]
         for tweet in tweets.values():
             match = re.search(regex, tweet.clean_text, re.IGNORECASE)
             if match:
@@ -42,3 +42,8 @@ def scoring(name, tweet):
 
 # def aggregate_names(names):
 identify_winner("best actress", [])
+# json = "gg2013.json"
+# tweets, _ = read_tweet_data(json)
+# for tweet in tweets.values():
+#     if "Jennifer Lawrence" in tweet.clean_text:
+#         print(tweet.clean_text)
