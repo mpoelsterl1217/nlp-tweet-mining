@@ -18,12 +18,12 @@ def extract_verb_names(text):
 
 
 # Load the JSON file
-with open('/Users/runkaiqiu/nlp-tweet-mining/gg2013.json', 'r') as file:
+with open('gg2013.json', 'r') as file:
     data = json.load(file)
 
 result=[]
 for idx, entry in enumerate(data):
-    if idx>=1000:
+    if idx>=10000:
         break
     text = entry['text']
     person_names = extract_person_names(text)
@@ -37,23 +37,22 @@ print(len(result))
 
 # one way to find different person
 def find_different_people(names):
-    result2 = []
+    result = []
     
     # Compare each pair in the list
     for i in range(len(names)):
         count=0
-        for j in range(0, len(names)):
+        for j in range(len(names)):
             similarity = fuzz.ratio(names[i], names[j])
             
             if similarity < 90:  # If similarity < 90%, consider them different people
                 count+=1
                 if count==len(names)-1:
-                    result2.append(names[i])
+                    result.append(names[i])
             if similarity >= 90 and i!=j:
                 print(names[i]+" is same "+ names[j])
             
-    
-    return result2
+    return result
 
 result=find_different_people(result)
 print(result)
