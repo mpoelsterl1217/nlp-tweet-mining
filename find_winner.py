@@ -41,7 +41,7 @@ def scoring(name, tweet):
     return 1
 
 # def aggregate_names(names):
-identify_winner("best actress", [])
+# identify_winner("best director", [])
 # json = "gg2013.json"
 # tweets, _ = read_tweet_data(json)
 # for tweet in tweets.values():

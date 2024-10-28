@@ -39,4 +39,4 @@ def scoring(name, tweet):
         return 5
     return 1
 
-identify_nominees("best actress")
+# identify_nominees("best director")
