@@ -20,5 +20,3 @@ def find_different_people(names):
             result[key] = value
 
     return result
-
-

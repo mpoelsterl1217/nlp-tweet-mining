@@ -5,15 +5,13 @@ from reader import read_tweet_data
 from tweet import Tweet
 
 # TODO: we'll need to run this on many versions of an award name and aggregate
-def identify_winner(award_name, nominees):
+def identify_winner(award_name, nominees, tweets):
     with open('winner_regexes.txt', 'r') as file:
         # read regex line and get rid of \n at the end
         print("reading...")
         regexes = file.readlines()
     nlp = spacy.load("en_core_web_sm")
     matches = defaultdict(int)
-    json = "gg2013.json"
-    tweets, _ = read_tweet_data(json)
     for r in regexes:
         regex = r.replace("[AWARD NAME]", award_name)[0:-1]
         for tweet in tweets.values():

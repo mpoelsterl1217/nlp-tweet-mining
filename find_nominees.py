@@ -5,21 +5,19 @@ from reader import read_tweet_data
 from tweet import Tweet
 
 # TODO: we'll need to run this on many versions of an award name and aggregate
-def identify_nominees(award_name):
+def identify_nominees(award_name, tweets):
     with open('nominee_regexes.txt', 'r') as file:
         # read regex line and get rid of \n at the end
         print("reading...")
         regexes = file.readlines()
     nlp = spacy.load("en_core_web_sm")
     matches = defaultdict(int)
-    json = "gg2013.json"
-    tweets, _ = read_tweet_data(json)
     for regex in regexes:
         regex = regex.replace("[AWARD NAME]", award_name)[0:-1]
         for tweet in tweets.values():
             match = re.search(regex, tweet.clean_text, re.IGNORECASE)
             if match:
-                print(tweet.clean_text)
+                # print(tweet.clean_text)
                 potential_name = match.group(1)
                 doc = nlp(tweet.clean_text)
                 people = [ent.text for ent in doc.ents if ent.label_ == 'PERSON']

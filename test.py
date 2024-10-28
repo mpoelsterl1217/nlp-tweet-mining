@@ -34,9 +34,11 @@ with open('tweet_award_names.txt', 'w', encoding='utf-8') as f:
 print(empty)
 
 # for i in award_name_13:
-#     winners=identify_winner(i, [])
-#     result=find_different_people(winners)
-#     if result:
-#         print(i+" : "+max(result, key=result.get))
-#     else:
-#         print(i + " : empty")
+
+# winners=identify_winner("best actress", [], tweets)
+# result=find_different_people(winners)
+# print(result)
+    # if result:
+    #     print(i+" : "+max(result, key=result.get))
+    # else:
+    #     print(i + " : empty")
