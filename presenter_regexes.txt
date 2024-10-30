@@ -1,0 +1,3 @@
+(.+) (presents|presented) [AWARD NAME](.+)
+[AWARD NAME] (is|was) presented by (.+)
+(.+) gives (.+) the award for [AWARD NAME](.+)
