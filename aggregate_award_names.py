@@ -15,7 +15,7 @@ def extract_keywords(names):
     keywords = {}
     for name in names:
         doc = nlp(name.lower())
-        # 提取非停用词，并且是名词或形容词等有意义的词性
+        # 
         tokens = [token.lemma_ for token in doc if not token.is_stop and token.pos_ in {"NOUN", "PROPN", "ADJ"} ]
         keywords[name] = sorted(tokens)
     return keywords
