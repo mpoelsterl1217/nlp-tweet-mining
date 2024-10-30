@@ -6,7 +6,7 @@ from tweet import Tweet
 
 # TODO: we'll need to run this on many versions of an award name and aggregate
 def identify_nominees(award_name, tweets):
-    with open('nominee_regexes.txt', 'r') as file:
+    with open('regexes/nominee_regexes.txt', 'r') as file:
         # read regex line and get rid of \n at the end
         print("reading...")
         regexes = file.readlines()
@@ -38,4 +38,4 @@ def scoring(name, tweet):
     return 1
 
 tweets = read_tweet_data("gg2013.json")[0]
-identify_nominees("best screenplay - motion picture", tweets)
+identify_nominees("best actress", tweets)

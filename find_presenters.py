@@ -6,7 +6,7 @@ from tweet import Tweet
 
 # TODO: we'll need to run this on many versions of an award name and aggregate
 def identify_presenters(award_name, winner, tweets):
-    with open('presenter_regexes.txt', 'r') as file:
+    with open('regexes/presenter_regexes.txt', 'r') as file:
         # read regex line and get rid of \n at the end
         print("reading...")
         regexes = file.readlines()

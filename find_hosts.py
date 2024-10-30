@@ -5,7 +5,7 @@ from reader import read_tweet_data
 from tweet import Tweet
 
 def identify_host(tweets):
-    with open('host_regexes.txt', 'r') as file:
+    with open('regexes/host_regexes.txt', 'r') as file:
         # read regex line and get rid of \n at the end
         print("reading...")
         regexes = file.readlines()
