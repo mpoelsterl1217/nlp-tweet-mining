@@ -1,4 +1,3 @@
-import re
 from fuzzywuzzy import fuzz
 from collections import defaultdict
 import spacy

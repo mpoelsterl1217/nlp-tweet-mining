@@ -2,7 +2,7 @@ import json
 import spacy
 from fuzzywuzzy import fuzz
 from find_winner import identify_winner
-from find_different_person import find_different_people
+from aggregate_person import find_different_people
 from reader import read_tweet_data
 
 # tweets, users = read_tweet_data("gg2013.json")

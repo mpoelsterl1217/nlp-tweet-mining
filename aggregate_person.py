@@ -17,7 +17,7 @@ def update_name_keys(input_dict):
     return updated_dict
 
 # one way to find different person
-def find_different_people(names):
+def aggregate_people(names):
     # double check
     names=update_name_keys(names)
 
