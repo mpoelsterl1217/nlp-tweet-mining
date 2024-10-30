@@ -66,7 +66,7 @@ for tweet in tweets.values():
         if after_hyphen and any(ent.label_ == "PERSON" for ent in after_hyphen_doc.ents):
             continue  # Skip if a person's name appears after the hyphen
 
-        print("Award Found:", span.text)
+        # print("Award Found:", span.text)
         result.append(span.text)
 
 print(remove_substrings(result))
