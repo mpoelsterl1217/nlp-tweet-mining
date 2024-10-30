@@ -18,12 +18,12 @@ def identify_winner(award_name, nominees, tweets):
             match = re.search(regex, tweet.clean_text, re.IGNORECASE)
             if match:
                 # print("match")
-                potential_name = match.group(1)
+                potential_winner = match.group(1)
                 doc = nlp(tweet.clean_text)
-                people = [ent.text for ent in doc.ents if ent.label_ == 'PERSON']
-                for person in people:
-                    if person in potential_name:
-                        matches[person] += scoring(potential_name, tweet)
+                winner_entities = [ent.text for ent in doc.ents if ent.label_ in {'PERSON', 'ORG', 'WORK_OF_ART'}]
+                for winner in winner_entities:
+                    if winner in potential_winner:
+                        matches[winner] += scoring(potential_winner, tweet)
     # SEE WHICH OF THEM MATCH THE NOMINEE LIST
     print(dict(sorted(matches.items(), key=lambda item: item[1], reverse=True)))
     return(matches)
@@ -37,11 +37,3 @@ def scoring(name, tweet):
     if "RT @" in tweet.clean_text:
         return 5
     return 1
-
-# def aggregate_names(names):
-# identify_winner("best director", [])
-# json = "gg2013.json"
-# tweets, _ = read_tweet_data(json)
-# for tweet in tweets.values():
-#     if "Jennifer Lawrence" in tweet.clean_text:
-#         print(tweet.clean_text)
