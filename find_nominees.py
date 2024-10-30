@@ -37,4 +37,5 @@ def scoring(name, tweet):
         return 5
     return 1
 
-# identify_nominees("best director")
+tweets = read_tweet_data("gg2013.json")[0]
+identify_nominees("best director", tweets)

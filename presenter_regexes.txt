@@ -1,3 +1,4 @@
-(.+) (presents|presented) [AWARD NAME](.+)
+(.+) (present|presents|presented) [AWARD NAME](.+)
 [AWARD NAME] (is|was) presented by (.+)
-(.+) gives (.+) the award for [AWARD NAME](.+)
+(.+) (gives|give|gave) (.+) the award for [AWARD NAME](.+)
+(.+) (present|presents|presented|hand|hands|give|gives|handed|gave) [AWARD NAME] to [WINNER](.+)
