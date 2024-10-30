@@ -18,12 +18,12 @@ def identify_nominees(award_name, tweets):
             match = re.search(regex, tweet.clean_text, re.IGNORECASE)
             if match:
                 # print(tweet.clean_text)
-                potential_name = match.group(1)
+                potential_wnominees = match.group(1)
                 doc = nlp(tweet.clean_text)
-                people = [ent.text for ent in doc.ents if ent.label_ == 'PERSON']
-                for person in people:
-                    if person in potential_name:
-                        matches[person] += scoring(potential_name, tweet)
+                nominees_entities = [ent.text for ent in doc.ents if ent.label_ in {'PERSON', 'ORG', 'WORK_OF_ART'}]
+                for nominee in nominees_entities:
+                    if nominee in potential_wnominees:
+                        matches[nominee] += scoring(potential_wnominees, tweet)
     print(dict(sorted(matches.items(), key=lambda item: item[1], reverse=True)))
     return(matches)
     # return a dictionary with counts of each of them
