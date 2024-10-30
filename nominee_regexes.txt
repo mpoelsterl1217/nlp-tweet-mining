@@ -1,3 +1,9 @@
 (.+) (was|is|are|were) nominated for [AWARD NAME](.+)
 (.+) nominated for [AWARD NAME](.+)
 (.+) (is|are) up for [AWARD NAME](.+)
+(.+) are all nominated for [AWARD NAME](.+)
+[AWARD NAME] nominee (.+)
+[AWARD NAME] nominees (.+)
+(congrats|congratulations) to (.+) for (his|her|its|their|the) [AWARD NAME] nomination(.+)
+(.+) nominated for [AWARD NAME]
+(.+) on (his|her|its|their) [AWARD NAME] nomination(.+)

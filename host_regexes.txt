@@ -1,0 +1,4 @@
+(.+) (host|hosts|hosted) this year's (.+) awards(.+)
+(.+) (host|hosts|hosted) this year's (.+) ceremony(.+)
+(.+) (host|hosts|hosted) the (.+) awards(.+)
+(.+) (host|hosts|hosted) the (.+) ceremony(.+)
