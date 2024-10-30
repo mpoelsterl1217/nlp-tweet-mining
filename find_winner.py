@@ -37,3 +37,7 @@ def scoring(name, tweet):
     if "RT @" in tweet.clean_text:
         return 5
     return 1
+
+
+tweets = read_tweet_data("gg2013.json")[0]
+identify_winner("best screenplay - motion picture", [], tweets)

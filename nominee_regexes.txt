@@ -1,3 +1,3 @@
-(.+) (was|is) nominated for [AWARD NAME](.+)
+(.+) (was|is|are|were) nominated for [AWARD NAME](.+)
 (.+) nominated for [AWARD NAME](.+)
-(.+) is up for [AWARD NAME](.+)
+(.+) (is|are) up for [AWARD NAME](.+)

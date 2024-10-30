@@ -18,12 +18,12 @@ def identify_nominees(award_name, tweets):
             match = re.search(regex, tweet.clean_text, re.IGNORECASE)
             if match:
                 # print(tweet.clean_text)
-                potential_wnominees = match.group(1)
+                potential_nominees = match.group(1)
                 doc = nlp(tweet.clean_text)
                 nominees_entities = [ent.text for ent in doc.ents if ent.label_ in {'PERSON', 'ORG', 'WORK_OF_ART'}]
                 for nominee in nominees_entities:
-                    if nominee in potential_wnominees:
-                        matches[nominee] += scoring(potential_wnominees, tweet)
+                    if nominee in potential_nominees:
+                        matches[nominee] += scoring(potential_nominees, tweet)
     print(dict(sorted(matches.items(), key=lambda item: item[1], reverse=True)))
     return(matches)
     # return a dictionary with counts of each of them
@@ -38,4 +38,4 @@ def scoring(name, tweet):
     return 1
 
 tweets = read_tweet_data("gg2013.json")[0]
-identify_nominees("best director", tweets)
+identify_nominees("best screenplay - motion picture", tweets)
