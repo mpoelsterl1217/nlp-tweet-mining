@@ -8,7 +8,7 @@ from alternate_find_award import find_award
 if __name__ == "__main__":
     JSON_FILE = "gg2013.json"
 
-    tweets, users = read_tweet_data(JSON_FILE)
+    tweets = read_tweet_data(JSON_FILE)
 
     # host = find_host(tweets)
     # print(host)

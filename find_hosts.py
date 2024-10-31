@@ -39,8 +39,8 @@ def scoring(name, tweet):
     return 5 * tweet.retweets
 
 
-def find_host(award_name):
-    matches = identify_host(award_name)
+def find_host(tweets):
+    matches = identify_host(tweets)
     matches = aggregate_by_similarities(matches)
 
     # only get the largest one
