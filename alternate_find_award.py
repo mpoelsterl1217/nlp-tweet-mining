@@ -18,18 +18,18 @@ def identify_awards(tweets):
         {"LOWER": "best"},                     # "best" (case insensitive)
         {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"},  # One or more title-case words (suggesting formality)
         {"TEXT": {"REGEX": "[-–—]"}},                # Punctuation, like "--" or "-"
-        {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"}   # More formal terms, like role/category/year
+        {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"},   # More formal terms, like role/category/year
         {"POS": "PROPN", "OP": "!"}  # Exclude proper nouns (like names) that follow
     ]
     award_pattern2 = [
         {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
-        {"POS": "NOUN", "OP": "+"}    # noun (e.g., "Actress", "Picture")
+        {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
         {"POS": "PROPN", "OP": "!"}  # Exclude proper nouns (like names) that follow
     ]
     award_pattern3 = [
         {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
-        {"POS": "NOUN", "OP": "+"}    # noun (e.g., "Actress", "Picture")
-        {"LOWER": "in a"}
+        {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
+        {"LOWER": "in a"},
         {"POS": "PROPN", "OP": "!"}  # Exclude proper nouns (like names) that follow
     ]
 
