@@ -5,12 +5,14 @@ from find_presenters import find_presenters
 from find_winner import find_winner
 from alternate_find_award import find_award
 from filter_tweets import filter_tweets
+from pickle_preprocess import unpickle_tweets
 
 if __name__ == "__main__":
     JSON_FILE = "gg2013.json"
 
-    tweets = read_tweet_data(JSON_FILE)
-    # tweets = filter_tweets(tweets)
+    # tweets = read_tweet_data(JSON_FILE)
+    tweets = unpickle_tweets()
+    tweets = filter_tweets(tweets)
     print("tweet length:", len(tweets))
 
     host = find_host(tweets)
