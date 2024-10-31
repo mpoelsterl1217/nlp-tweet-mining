@@ -68,7 +68,7 @@ def identify_awards(tweets):
                     # print(span.text)
                 if longest is not None:
                     # print("HEREEEEEEEEEEEEEEE")
-                    final_awards[longest.text] += scoring("", tweet)
+                    final_awards[longest.text.lower()] += scoring("", tweet)
                 # for award in award_entities:
                 #         if award in potential_award:
                 #             print(award)
