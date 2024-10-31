@@ -4,6 +4,7 @@ from find_nominees import find_nominees
 from find_presenters import find_presenters
 from find_winner import find_winner
 from alternate_find_award import find_award
+from find_performers import find_performers
 from filter_tweets import filter_tweets
 from pickle_preprocess import unpickle_tweets
 import json
@@ -19,8 +20,13 @@ if __name__ == "__main__":
     host = find_host(tweets)
     print("hosts:", host)
 
+    print("\n\n")
+    performers = find_performers(tweets)
+    print("performers:", performers)
+
     json_data= {
         "Host": host,
+        "Performers": performers,
         "award_data": {}
     }
 
