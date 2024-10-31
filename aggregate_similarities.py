@@ -50,5 +50,5 @@ def aggregate_by_similarities(names,threshold=90):
         if not found:
             result[key] = value
     
-    print(result)
+    # print(result)
     return result
