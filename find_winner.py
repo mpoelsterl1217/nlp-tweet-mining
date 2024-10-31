@@ -9,7 +9,7 @@ from aggregate_similarities import aggregate_by_similarities
 def identify_winner(award_name, nominees, tweets):
     with open('regexes/winner_regexes.txt', 'r') as file:
         # read regex line and get rid of \n at the end
-        print("reading...")
+        # print("reading...")
         regexes = file.readlines()
     nlp = spacy.load("en_core_web_sm")
     matches = defaultdict(int)

@@ -9,7 +9,7 @@ from aggregate_award_names import aggregate_names
 def identify_awards(tweets):
 
     with open('regexes/award_regexes.txt', 'r') as file:
-        print("reading...")
+        # print("reading...")
         regexes = file.readlines()
 
     nlp = spacy.load("en_core_web_sm")
@@ -78,7 +78,7 @@ def identify_awards(tweets):
         g = regex[:regex.find("[AWARD NAME]")].count("(.+)")
         regex = regex.replace("[AWARD NAME]", "(.+)")
         regex = regex.replace("(.+)(.+)", "(.+)")
-        print(regex, g+1)
+        # print(regex, g+1)
         for tweet in tweets:
             match = re.search(regex, tweet.clean_text, re.IGNORECASE)
         # for tweet in tweets:

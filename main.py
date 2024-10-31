@@ -10,21 +10,27 @@ if __name__ == "__main__":
     JSON_FILE = "gg2013.json"
 
     tweets = read_tweet_data(JSON_FILE)
-    tweets = filter_tweets(tweets)
+    # tweets = filter_tweets(tweets)
     print("tweet length:", len(tweets))
 
     host = find_host(tweets)
-    print(host)
+    print("hosts:", host)
 
     award_list = find_award(tweets)
-    print(award_list)
     awards_final = []
     for i in award_list:
         awards_final.append(max(i, key=len))
-    print(awards_final)
 
-    for award in awards_final:
-        nominees = find_nominees(award, tweets)
-        winner = find_winner(award, nominees, tweets)
-        presenter = find_presenters(award, winner, tweets)
+    for i in range(len(award_list)):
+        award = awards_final[i]
+        print("\n\n")
+        print("AWARD:", award)
+        print("alternative names:", award_list[i])
+        award_names = "(" + "|".join(award_list[i]) + ")"
+        nominees = find_nominees(award_names, tweets)
+        print("nominees:", nominees)
+        winner = find_winner(award_names, nominees, tweets)[0]
+        print("winner:", winner)
+        presenter = find_presenters(award_names, winner, tweets)
+        print("presenters:", presenter)
 
