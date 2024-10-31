@@ -5,7 +5,6 @@ from nltk.stem import WordNetLemmatizer as wnl
 import datetime
 import re
 from typing import List
-from inflection import humanize, underscore
 from langdetect import detect
 
 
