@@ -8,10 +8,13 @@ Our code can be run simply by running "pip install -r requirements.txt" in a vir
 Our code identifies the hosts and performers, along with award names, presenters, nominees, and winners of each award.
 
 Output:
-    {Hosts: Host Names
-    Performer: Performer Names
     
-    Award: Award Name
-    Presenters: Presenter Names
-    Nominees: Nominee Names
-    Winner: Winner Name}
+    {
+    hosts: host names
+    performer: performer names
+    award_data[award]={
+                "nominees" : nominees,
+                "presenters" : presenter,
+                "winner" : winner
+            }
+    }
