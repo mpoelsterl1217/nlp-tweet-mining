@@ -30,7 +30,7 @@ def identify_awards(tweets):
     award_pattern3 = [
         {"LOWER": "best"},
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
-        {"LOWER": "in a"},
+        {"LOWER": {"IN": ["by a", "in a"]}, "OP": "?"},
         {"POS": "NOUN", "OP": "+"}
     ]
     award_pattern4 = [
@@ -40,7 +40,7 @@ def identify_awards(tweets):
         {"POS": "NOUN", "OP": "+"},
         {"TEXT": {"REGEX": "[-–—]"}},
         {"POS": "NOUN", "OP": "+"},
-        {"TEXT": {"REGEX": "^(/|or)$"}}, 
+        {"LOWER": {"IN": ["/", "or"]}, "OP": "?"},
         {"POS": "NOUN", "OP": "+"}
     ]
     award_pattern5 = [
@@ -56,7 +56,7 @@ def identify_awards(tweets):
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
         {"TEXT": {"REGEX": "[-–—]"}},
         {"POS": "NOUN", "OP": "+"},
-        {"TEXT": {"REGEX": "^(/|or)$"}}, 
+        {"LOWER": {"IN": ["/", "or"]}, "OP": "?"},
         {"POS": "NOUN", "OP": "+"}
     ]
     award_pattern7 = [

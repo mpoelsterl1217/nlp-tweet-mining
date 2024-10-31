@@ -13,6 +13,10 @@ def identify_nominees(award_name, tweets):
         regexes = file.readlines()
     nlp = spacy.load("en_core_web_sm")
     matches = defaultdict(int)
+    labels = {'PERSON'}
+    if not ("actor" in award_name or "actress" in award_name or "performance" in award_name or "director" in award_name):
+        labels.add('ORG')
+        labels.add('WORK_OF_ART')
     for regex in regexes:
         regex = regex.replace("[AWARD NAME]", award_name)[0:-1]
         regex = re.compile(regex, re.IGNORECASE)
@@ -22,7 +26,7 @@ def identify_nominees(award_name, tweets):
                 # print(tweet.clean_text)
                 potential_nominees = match.group(1)
                 doc = nlp(tweet.clean_text)
-                nominees_entities = [ent.text for ent in doc.ents if ent.label_ in {'PERSON', 'ORG', 'WORK_OF_ART'}]
+                nominees_entities = [ent.text for ent in doc.ents if ent.label_ in labels]
                 for nominee in nominees_entities:
                     if nominee in potential_nominees:
                         matches[nominee] += scoring(potential_nominees, tweet)

@@ -13,6 +13,10 @@ def identify_winner(award_name, nominees, tweets):
         regexes = file.readlines()
     nlp = spacy.load("en_core_web_sm")
     matches = defaultdict(int)
+    labels = {'PERSON'}
+    if not ("actor" in award_name or "actress" in award_name or "performance" in award_name or "director" in award_name):
+        labels.add('ORG')
+        labels.add('WORK_OF_ART')
     for r in regexes:
         regex = r.replace("[AWARD NAME]", award_name)[0:-1]
         regex = re.compile(regex, re.IGNORECASE)
@@ -22,7 +26,7 @@ def identify_winner(award_name, nominees, tweets):
                 # print("match")
                 potential_winner = match.group(1)
                 doc = nlp(tweet.clean_text)
-                winner_entities = [ent.text for ent in doc.ents if ent.label_ in {'PERSON', 'ORG', 'WORK_OF_ART'}]
+                winner_entities = [ent.text for ent in doc.ents if ent.label_ in labels]
                 for winner in winner_entities:
                     if winner in potential_winner:
                         matches[winner] += scoring(potential_winner, tweet)
@@ -50,6 +54,8 @@ def find_winner(award_name, nominees, tweets):
     # largest_keys = [key for key, value in sorted(matches.items(), key=lambda item: item[1], reverse=True)[:top_n]]
 
     # return largest_keys
+    if len(matches) == 0:
+        return []
     return [max(matches, key=matches.get)]
 
 # tweets = read_tweet_data("gg2013.json")[0]
