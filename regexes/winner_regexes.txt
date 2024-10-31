@@ -5,5 +5,5 @@
 [AWARD NAME] goes to (.+)
 [AWARD NAME]: (.+)
 (.+) for [AWARD NAME]
-[AWARD NAME] - (.+)
+[AWARD NAME] (-–—) (.+)
 [AWARD NAME] award winner (.+)
