@@ -4,11 +4,15 @@ from tweet import Tweet
 tweets = read_tweet_data("gg2013.json")[0]
 
 relevant = []
+i = 0
 for t in tweets.values():
     tweet = t.clean_text
-    if "Joaquin Phoenix" in tweet:
+    if "Best Director" in tweet:
         relevant.append(tweet)
+        i += 1
+    if i == 1000:
+        break
 
-with open('experiments/everything_with_Joaquin_Phoenix.txt', 'w') as f:
+with open('experiments/best_director_award_experiment.txt', 'w') as f:
     for line in relevant:
         f.write(f"{line}\n")
