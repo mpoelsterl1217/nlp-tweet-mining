@@ -10,8 +10,8 @@ if __name__ == "__main__":
 
     tweets, users = read_tweet_data(JSON_FILE)
     host = find_host(tweets)
-    # award = find_award(tweets)
-    # nominees = find_nominees(award,tweets)
-    # winner = find_winner(award,nominees,tweets)
-    # presenter = find_presenters(award,winner,tweets)
+    award = find_award(tweets)
+    nominees = find_nominees(award,tweets)
+    winner = find_winner(award,nominees,tweets)
+    presenter = find_presenters(award,winner,tweets)
 

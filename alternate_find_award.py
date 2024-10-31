@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import re
 import spacy
 from spacy.matcher import Matcher
@@ -20,7 +19,6 @@ def identify_awards(tweets):
         {"LOWER": "best"},                     # "best" (case insensitive)
         {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"},  # One or more title-case words (suggesting formality)
         {"TEXT": {"REGEX": "[-–—]"}},                # Punctuation, like "--" or "-"
-<<<<<<< HEAD
         {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"}# ,   # More formal terms, like role/category/year
         # {"POS": "PERSON", "OP": "!"}  # Exclude proper nouns (like names) that follow
     ]
@@ -28,26 +26,12 @@ def identify_awards(tweets):
         {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
         {"POS": "NOUN", "OP": "+"}# ,    # noun (e.g., "Actress", "Picture")
         # {"POS": "PERSON", "OP": "!"}  # Exclude proper nouns (like names) that follow
-=======
-        {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"},   # More formal terms, like role/category/year
-        {"POS": "PROPN", "OP": "!"}  # Exclude proper nouns (like names) that follow
-    ]
-    award_pattern2 = [
-        {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
-        {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
-        {"POS": "PROPN", "OP": "!"}  # Exclude proper nouns (like names) that follow
->>>>>>> d66c776750a210692b40166a68c43e80dea15877
     ]
     award_pattern3 = [
         {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
-<<<<<<< HEAD
         {"LOWER": "in a"}# ,
         # {"POS": "PERSON", "OP": "!"}  # Exclude proper nouns (like names) that follow
-=======
-        {"LOWER": "in a"},
-        {"POS": "PROPN", "OP": "!"}  # Exclude proper nouns (like names) that follow
->>>>>>> d66c776750a210692b40166a68c43e80dea15877
     ]
 
     # TODO: keep in /
@@ -68,7 +52,6 @@ def identify_awards(tweets):
         #     match = re.search(regex, tweet[0:-1], re.IGNORECASE)
             if match:
                 potential_award = match.group(g + 1)
-                # print(potential_award)
                 doc = nlp(tweet.clean_text)
                 # doc = nlp(tweet)
                 # award_entities = [ent.text for ent in doc.ents if ent.label_ in {'PROPN'}]
@@ -103,110 +86,4 @@ tweets = read_tweet_data("gg2013.json")[0]
 # with open('experiments/best_director_award_experiment.txt', 'r') as file:
 #         print("reading...")
 #         tweets = file.readlines()
-=======
-import re
-import spacy
-from spacy.matcher import Matcher
-from collections import defaultdict
-from reader import read_tweet_data
-from tweet import Tweet
-
-def identify_awards(tweets):
-
-    with open('regexes/award_regexes.txt', 'r') as file:
-        print("reading...")
-        regexes = file.readlines()
-
-    nlp = spacy.load("en_core_web_sm")
-    final_awards = defaultdict(int)
-    matcher = Matcher(nlp.vocab)
-    
-    award_pattern1 = [
-        {"LOWER": "best"},                     # "best" (case insensitive)
-        {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"},  # One or more title-case words (suggesting formality)
-        {"TEXT": {"REGEX": "[-–—]"}},                # Punctuation, like "--" or "-"
-<<<<<<< HEAD
-        {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"}# ,   # More formal terms, like role/category/year
-        # {"POS": "PERSON", "OP": "!"}  # Exclude proper nouns (like names) that follow
-    ]
-    award_pattern2 = [
-        {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
-        {"POS": "NOUN", "OP": "+"}# ,    # noun (e.g., "Actress", "Picture")
-        # {"POS": "PERSON", "OP": "!"}  # Exclude proper nouns (like names) that follow
-=======
-        {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"},   # More formal terms, like role/category/year
-        {"POS": "PROPN", "OP": "!"}  # Exclude proper nouns (like names) that follow
-    ]
-    award_pattern2 = [
-        {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
-        {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
-        {"POS": "PROPN", "OP": "!"}  # Exclude proper nouns (like names) that follow
->>>>>>> d66c776750a210692b40166a68c43e80dea15877
-    ]
-    award_pattern3 = [
-        {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
-        {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
-<<<<<<< HEAD
-        {"LOWER": "in a"}# ,
-        # {"POS": "PERSON", "OP": "!"}  # Exclude proper nouns (like names) that follow
-=======
-        {"LOWER": "in a"},
-        {"POS": "PROPN", "OP": "!"}  # Exclude proper nouns (like names) that follow
->>>>>>> d66c776750a210692b40166a68c43e80dea15877
-    ]
-
-    # TODO: keep in /
-
-    matcher.add("AWARD_NAME1", [award_pattern1])
-    matcher.add("AWARD_NAME2", [award_pattern2])
-    matcher.add("AWARD_NAME3", [award_pattern3])
-
-    for r in regexes:
-        regex = r[0:-1]
-        g = regex[:regex.find("[AWARD NAME]")].count("(.+)")
-        regex = regex.replace("[AWARD NAME]", "(.+)")
-        regex = regex.replace("(.+)(.+)", "(.+)")
-        print(regex, g+1)
-        for tweet in tweets.values():
-            match = re.search(regex, tweet.clean_text, re.IGNORECASE)
-        # for tweet in tweets:
-        #     match = re.search(regex, tweet[0:-1], re.IGNORECASE)
-            if match:
-                potential_award = match.group(g + 1)
-                # print(potential_award)
-                doc = nlp(tweet.clean_text)
-                # doc = nlp(tweet)
-                # award_entities = [ent.text for ent in doc.ents if ent.label_ in {'PROPN'}]
-                potential_award = nlp(potential_award)
-                matches = matcher(potential_award)
-                longest = None
-                for match_id, start, end in matches:
-                    # print("match whatever")
-                    if longest is None or len(longest) < end - start:
-                        # print("TRUE", potential_award[start:end], "THAT")
-                        longest = potential_award[start:end]
-                    # span = doc[start:end]
-                    # award_names.append(span.text)
-                    # print(span.text)
-                if longest is not None:
-                    # print("HEREEEEEEEEEEEEEEE")
-                    final_awards[longest.text] += scoring("", tweet)
-                # for award in award_entities:
-                #         if award in potential_award:
-                #             print(award)
-                #             matches[award] += scoring(potential_award, tweet)
-    print(dict(sorted(final_awards.items(), key=lambda item: item[1], reverse=True)))
-    return(final_awards)
-
-
-def scoring(name, tweet):
-    if "RT @" in tweet.clean_text:
-        return 5
-    return 1
-
-tweets = read_tweet_data("gg2013.json")[0]
-# with open('experiments/best_director_award_experiment.txt', 'r') as file:
-#         print("reading...")
-#         tweets = file.readlines()
->>>>>>> fd1f228872e8cd119f50b888feede1da6016f7c2
 identify_awards(tweets)
