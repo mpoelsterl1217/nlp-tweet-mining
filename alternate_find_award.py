@@ -115,17 +115,6 @@ def scoring(name, tweet):
         return 1
     return 5 * tweet.retweets
 
-<<<<<<< HEAD
-tweets = read_tweet_data("gg2013.json")[0]
-# with open('experiments/best_director_award_experiment.txt', 'r') as file:
-#         print("reading...")
-#         tweets = file.readlines()
-
-awards = identify_awards(tweets)
-with open('experiments/another_award_exp_12am.txt', 'w') as f:
-    for line, count in awards:
-        f.write(f"{line, count}\n")
-=======
 def find_award(tweets):
     matches=identify_awards(tweets)
     # remove values smaller than 2
@@ -145,4 +134,3 @@ def find_award(tweets):
 # #         print("reading...")
 # #         tweets = file.readlines()
 # identify_awards(tweets)
->>>>>>> 55d6256cce3c6f61a76ea68323341ed57816fc7b
