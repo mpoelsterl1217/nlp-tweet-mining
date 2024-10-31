@@ -79,7 +79,7 @@ def identify_awards(tweets):
         regex = regex.replace("[AWARD NAME]", "(.+)")
         regex = regex.replace("(.+)(.+)", "(.+)")
         print(regex, g+1)
-        for tweet in tweets.values():
+        for tweet in tweets:
             match = re.search(regex, tweet.clean_text, re.IGNORECASE)
         # for tweet in tweets:
         #     match = re.search(regex, tweet[0:-1], re.IGNORECASE)

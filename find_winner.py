@@ -15,7 +15,7 @@ def identify_winner(award_name, nominees, tweets):
     matches = defaultdict(int)
     for r in regexes:
         regex = r.replace("[AWARD NAME]", award_name)[0:-1]
-        for tweet in tweets.values():
+        for tweet in tweets:
             match = re.search(regex, tweet.clean_text, re.IGNORECASE)
             if match:
                 # print("match")
