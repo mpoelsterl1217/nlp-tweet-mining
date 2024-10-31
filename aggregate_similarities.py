@@ -80,6 +80,13 @@ def combine_subset_key(data):
         # If the key was not a substring of any existing key, add it to combined_data
         if not found_superstring:
             combined_data[key] = data[key]
+    
+    #Remove entries with "Golden Globes" in the key
+    combined_data = {
+        key.replace("Golden Globes", "").replace("Golden Globe", "").strip(): value
+        for key, value in combined_data.items()
+        if key not in ["Golden Globes", "Golden Globe"]
+    }
 
     return combined_data
 
@@ -95,11 +102,14 @@ def aggragate_filter(data):
         # Add the cleaned key and value to the new dictionary
         cleaned_data[cleaned_key.strip()] = value
     return cleaned_data
+
 # test={
-#     "Amy" : 1,
-#     "Amy LOL" : 1,
-#     "Jack" : 1,
-#     "hh Jack" : 1
+#     "Golden Globes Jack": ["Best Actor"],
+#     "Golden Globe Jill": ["Best Actress"],
+#     "Oscars": ["Best Picture", "Best Director"],
+#     "Golden Globes": ["Best TV Series"],
+#     "Golden Globe": ["Best Movie"],
+#     "lol Golden Globe": ["Best"],
 # }
 
 # print(aggregate_by_similarities(test))
