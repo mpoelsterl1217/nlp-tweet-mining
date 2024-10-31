@@ -15,9 +15,9 @@ def identify_host(tweets):
     for r in regexes:
         #regex = r.replace("[AWARD NAME]", award_name)[0:-1]
         regex = r[0:-1]
-        regex = re.compile(regex)
+        regex = re.compile(regex, re.IGNORECASE)
         for tweet in tweets:
-            match = re.search(regex, tweet.clean_text, re.IGNORECASE)
+            match = re.search(regex, tweet.clean_text)
             if match:
                 # print("match")
                 potential_host = match.group(1)

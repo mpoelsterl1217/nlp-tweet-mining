@@ -31,7 +31,8 @@ if __name__ == "__main__":
         award_names = "(" + "|".join(award_list[i]) + ")"
         nominees = find_nominees(award_names, tweets)
         print("nominees:", nominees)
-        winner = find_winner(award_names, nominees, tweets)[0]
+        winner_list = find_winner(award_names, nominees, tweets)
+        winner = winner_list[0] if winner_list != [] else None
         print("winner:", winner)
         presenter = find_presenters(award_names, winner, tweets)
         print("presenters:", presenter)

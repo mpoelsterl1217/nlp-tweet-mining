@@ -15,9 +15,9 @@ def identify_winner(award_name, nominees, tweets):
     matches = defaultdict(int)
     for r in regexes:
         regex = r.replace("[AWARD NAME]", award_name)[0:-1]
-        regex = re.compile(regex)
+        regex = re.compile(regex, re.IGNORECASE)
         for tweet in tweets:
-            match = re.search(regex, tweet.clean_text, re.IGNORECASE)
+            match = re.search(regex, tweet.clean_text)
             if match:
                 # print("match")
                 potential_winner = match.group(1)
@@ -42,14 +42,15 @@ def scoring(name, tweet):
 
 def find_winner(award_name, nominees, tweets):
     matches = identify_winner(award_name, nominees, tweets)
-    matches = aggregate_by_similarities(matches)
+    # matches = aggregate_by_similarities(matches)
 
-    # only get the largest one
-    top_n = 1
-    top_n = min(top_n, len(matches))
-    largest_keys = [key for key, value in sorted(matches.items(), key=lambda item: item[1], reverse=True)[:top_n]]
+    # # only get the largest one
+    # top_n = 1
+    # top_n = min(top_n, len(matches))
+    # largest_keys = [key for key, value in sorted(matches.items(), key=lambda item: item[1], reverse=True)[:top_n]]
 
-    return largest_keys
+    # return largest_keys
+    return max(matches, key=matches.get)
 
 # tweets = read_tweet_data("gg2013.json")[0]
 # print(find_winner("best screenplay - motion picture", [], tweets))

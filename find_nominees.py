@@ -15,9 +15,9 @@ def identify_nominees(award_name, tweets):
     matches = defaultdict(int)
     for regex in regexes:
         regex = regex.replace("[AWARD NAME]", award_name)[0:-1]
-        regex = re.compile(regex)
+        regex = re.compile(regex, re.IGNORECASE)
         for tweet in tweets:
-            match = re.search(regex, tweet.clean_text, re.IGNORECASE)
+            match = re.search(regex, tweet.clean_text)
             if match:
                 # print(tweet.clean_text)
                 potential_nominees = match.group(1)
