@@ -1,6 +1,7 @@
 import json
 import spacy
 from fuzzywuzzy import fuzz
+import re
 
 # def update_name_keys(input_dict):
 #     nlp = spacy.load("en_core_web_sm")
@@ -38,6 +39,8 @@ from fuzzywuzzy import fuzz
 # one way to aggregate winner/nominees
 def aggregate_by_similarities(names,threshold=90):
 
+    names=aggragate_filter(names)
+
     result = {}
     # Process the dictionary
     for key, value in names.items():
@@ -51,4 +54,52 @@ def aggregate_by_similarities(names,threshold=90):
             result[key] = value
     
     # print(result)
+    result=combine_subset_key(result)
     return result
+
+def combine_subset_key(data):
+    # Create a new dictionary to store combined results
+    combined_data = {}
+
+    # Loop through each key in the dictionary
+    for key in data:
+        # Check if the current key is a substring of any existing key in combined_data
+        found_superstring = False
+        for combined_key in combined_data:
+            if key in combined_key:
+                # Add the value to the existing longer key
+                combined_data[combined_key] += data[key]
+                found_superstring = True
+                break
+            elif combined_key in key:
+                # If an existing key is a substring of the current key, merge and replace
+                combined_data[key] = combined_data.pop(combined_key) + data[key]
+                found_superstring = True
+                break
+
+        # If the key was not a substring of any existing key, add it to combined_data
+        if not found_superstring:
+            combined_data[key] = data[key]
+
+    return combined_data
+
+def aggragate_filter(data):
+    # Regex pattern to remove "'s" at the end or any standalone "'"
+    pattern = re.compile(r"'s\b|'", re.IGNORECASE)
+
+    # Create a new dictionary with cleaned keys
+    cleaned_data = {}
+    for key, value in data.items():
+        # Remove unwanted patterns
+        cleaned_key = pattern.sub("", key)
+        # Add the cleaned key and value to the new dictionary
+        cleaned_data[cleaned_key.strip()] = value
+    return cleaned_data
+# test={
+#     "Amy" : 1,
+#     "Amy LOL" : 1,
+#     "Jack" : 1,
+#     "hh Jack" : 1
+# }
+
+# print(aggregate_by_similarities(test))

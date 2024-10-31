@@ -1,6 +1,5 @@
 import json
 from tweet import Tweet
-from user import User
 import preprocess
 from collections import defaultdict
 import re
