@@ -12,8 +12,8 @@ import json
 if __name__ == "__main__":
     JSON_FILE = "gg2013.json"
 
-    # tweets = read_tweet_data(JSON_FILE)
-    tweets = unpickle_tweets()
+    tweets = read_tweet_data(JSON_FILE)
+    # tweets = unpickle_tweets()
     tweets = filter_tweets(tweets)
     print("tweet length:", len(tweets))
 
@@ -62,6 +62,7 @@ if __name__ == "__main__":
                 "winner" : winner
             }
         file.write(f"performers: \"{performers}\"\n")
+        file.write(f"hosts: \"{host}\"\n")
 
     # with open("output.txt", "w", encoding="utf-8") as file:
     #     for i in range(len(award_list)):
