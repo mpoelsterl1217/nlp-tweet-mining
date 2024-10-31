@@ -10,11 +10,11 @@ Our code identifies the hosts and performers, along with award names, presenters
 Output:
     
     {
-    hosts: host names
-    performer: performer names
-    award_data[award]={
-                "nominees" : nominees,
-                "presenters" : presenter,
-                "winner" : winner
-            }
+        hosts: host names
+        performer: performer names
+        award_data[award]={
+                    "nominees" : nominees,
+                    "presenters" : presenter,
+                    "winner" : winner
+                }
     }
