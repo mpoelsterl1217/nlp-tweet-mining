@@ -82,13 +82,13 @@ def aggregate_names(names):
     return aggregated
 
 # Example usage
-award_names = [
-    "Best Motion Picture, Comedy or Musical", "Best Comedy/Musical", "Best Comedy or Musical", "Best Drama","Best television series - drama","Best actress - drama"
-]
-
 # award_names = [
-#     "Best Drama", "Best television series - drama", "Best actress - drama"
+#     "Best Motion Picture, Comedy or Musical", "Best Comedy/Musical", "Best Comedy or Musical", "Best Drama","Best television series - drama","Best actress - drama"
 # ]
 
-result = aggregate_names(award_names)
-print(result)
+# # award_names = [
+# #     "Best Drama", "Best television series - drama", "Best actress - drama"
+# # ]
+
+# result = aggregate_names(award_names)
+# print(result)

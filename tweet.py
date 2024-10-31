@@ -1,20 +1,29 @@
 import user
 import datetime
 import preprocess
+from typing import List
 
 class Tweet:
     clean_text: str
-    user: user.User
-    id: int
+    posted_by: str
+    tweet_id: int
     timestamp: datetime.datetime
+    retweeted_by: List[str]
+    hashtags: List[str]
 
-    ## TODO: add in fields for QTs, RTs, @s
+    def __init__(self, clean_text, poster_name, id, timestamp):
+        self.clean_text = clean_text
+        self.posted_by = poster_name
+        self.tweet_id = id
+        self.timestamp = timestamp
+        self.retweeted_by = []
+        self.retweets = 0
+        self.hashtags = []
 
-    def __init__(self, raw_text, user, id, timestamp):
-        self.clean_text = preprocess.clean_text(raw_text)
-        self.user = user
-        self.id = id
-        self.timestamp = preprocess.timestamp_to_datetime(timestamp)
+    def add_retweet_from(self, screen_name: str):
+        self.retweeted_by.append(screen_name)
+        self.retweets += 1
+
 
 
 
