@@ -30,13 +30,15 @@ def identify_awards(tweets):
     award_pattern3 = [
         {"LOWER": "best"},
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
-        {"LOWER": {"IN": ["by a", "in a"]}, "OP": "?"},
+        {"LOWER": {"IN": ["by", "in"]}, "OP": "?"},
+        {"LOWER": "a", "OP": "?"},
         {"POS": "NOUN", "OP": "+"}
     ]
     award_pattern4 = [
         {"LOWER": "best"},
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
-        {"LOWER": {"IN": ["by a", "in a"]}, "OP": "?"},
+        {"LOWER": {"IN": ["by", "in"]}, "OP": "?"},
+        {"LOWER": "a", "OP": "?"},
         {"POS": "NOUN", "OP": "+"},
         {"TEXT": {"REGEX": "[-–—]"}},
         {"POS": "NOUN", "OP": "+"},
@@ -46,7 +48,8 @@ def identify_awards(tweets):
     award_pattern5 = [
         {"LOWER": "best"},
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
-        {"LOWER": {"IN": ["by a", "in a"]}, "OP": "?"},
+        {"LOWER": {"IN": ["by", "in"]}, "OP": "?"},
+        {"LOWER": "a", "OP": "?"},
         {"POS": "NOUN", "OP": "+"},
         {"TEXT": {"REGEX": "[-–—]"}},
         {"POS": "NOUN", "OP": "+"}
@@ -66,15 +69,10 @@ def identify_awards(tweets):
         {"POS": "NOUN", "OP": "+"}
     ]
 
-    matcher.add("AWARD_NAME1", [award_pattern1])
-    matcher.add("AWARD_NAME2", [award_pattern2])
-    matcher.add("AWARD_NAME3", [award_pattern3])
-    matcher.add("AWARD_NAME4", [award_pattern4])
-    matcher.add("AWARD_NAME5", [award_pattern5])
-    matcher.add("AWARD_NAME6", [award_pattern6])
-    matcher.add("AWARD_NAME7", [award_pattern7])
-    
+    patterns = [award_pattern1, award_pattern2, award_pattern3, award_pattern4, award_pattern5, award_pattern6, award_pattern7]
 
+    matcher.add("AWARD_NAME", patterns)
+    
     '''award_patterns = [
         [
             {"LOWER": "best"},
