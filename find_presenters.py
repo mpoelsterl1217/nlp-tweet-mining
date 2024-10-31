@@ -36,9 +36,9 @@ def identify_presenters(award_name, winner, tweets):
 # fuzzywuzzy can help aggregate
 
 def scoring(name, tweet):
-    if "RT @" in tweet.clean_text:
-        return 5
-    return 1
+    if tweet.retweets == 0:
+        return 1
+    return 5 * tweet.retweets
 
 def find_presenters(award_name, winner, tweets):
     matches = identify_presenters(award_name, winner, tweets)

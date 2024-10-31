@@ -20,34 +20,31 @@ def identify_awards(tweets):
         {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"},  # One or more title-case words (suggesting formality)
         {"TEXT": {"REGEX": "[-–—]"}},                # Punctuation, like "--" or "-"
         {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"}# ,   # More formal terms, like role/category/year
-        # {"POS": "PERSON", "OP": "!"}  # Exclude proper nouns (like names) that follow
     ]
     award_pattern2 = [
         {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
         {"POS": "NOUN", "OP": "+"}# ,    # noun (e.g., "Actress", "Picture")
-        # {"POS": "PERSON", "OP": "!"}  # Exclude proper nouns (like names) that follow
     ]
     award_pattern3 = [
         {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
         {"LOWER": "in a"},
         {"POS": "NOUN", "OP": "+"}
-        # {"POS": "PERSON", "OP": "!"}  # Exclude proper nouns (like names) that follow
     ]
     award_pattern4 = [
         {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
-        {"LOWER": "(in|by) a"},
+        {"TEXT": {"REGEX": "^(in|by) a$"}},  
         {"POS": "NOUN", "OP": "+"},
         {"TEXT": {"REGEX": "[-–—]"}},
         {"POS": "NOUN", "OP": "+"},
-        {"LOWER": "(/|or)"},
+        {"TEXT": {"REGEX": "^(/|or)$"}}, 
         {"POS": "NOUN", "OP": "+"}
     ]
     award_pattern5 = [
         {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
-        {"LOWER": "(in|by) a"},
+        {"TEXT": {"REGEX": "^(in|by) a$"}},
         {"POS": "NOUN", "OP": "+"},
         {"TEXT": {"REGEX": "[-–—]"}},
         {"POS": "NOUN", "OP": "+"}
@@ -57,7 +54,7 @@ def identify_awards(tweets):
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
         {"TEXT": {"REGEX": "[-–—]"}},
         {"POS": "NOUN", "OP": "+"},
-        {"LOWER": "(/|or)"},
+        {"TEXT": {"REGEX": "^(/|or)$"}}, 
         {"POS": "NOUN", "OP": "+"}
     ]
     award_pattern7 = [
@@ -66,8 +63,6 @@ def identify_awards(tweets):
         {"TEXT": {"REGEX": "[-–—]"}},
         {"POS": "NOUN", "OP": "+"}
     ]
-
-    # TODO: keep in /
 
     matcher.add("AWARD_NAME1", [award_pattern1])
     matcher.add("AWARD_NAME2", [award_pattern2])
@@ -115,12 +110,16 @@ def identify_awards(tweets):
 
 
 def scoring(name, tweet):
-    if "RT @" in tweet.clean_text:
-        return 5
-    return 1
+    if tweet.retweets == 0:
+        return 1
+    return 5 * tweet.retweets
 
 tweets = read_tweet_data("gg2013.json")[0]
 # with open('experiments/best_director_award_experiment.txt', 'r') as file:
 #         print("reading...")
 #         tweets = file.readlines()
-identify_awards(tweets)
+
+awards = identify_awards(tweets)
+with open('experiments/another_award_exp_12am.txt', 'w') as f:
+    for line, count in awards:
+        f.write(f"{line, count}\n")

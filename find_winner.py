@@ -35,9 +35,9 @@ def identify_winner(award_name, nominees, tweets):
 # fuzzywuzzy can help aggregate
 
 def scoring(name, tweet):
-    if "RT @" in tweet.clean_text:
-        return 5
-    return 1
+    if tweet.retweets == 0:
+        return 1
+    return 5 * tweet.retweets
 
 def find_winner(award_name, nominees, tweets):
     matches = identify_winner(award_name, nominees, tweets)
