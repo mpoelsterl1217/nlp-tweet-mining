@@ -100,7 +100,10 @@ def aggragate_filter(data):
         # Remove unwanted patterns
         cleaned_key = pattern.sub("", key)
         # Add the cleaned key and value to the new dictionary
-        cleaned_data[cleaned_key.strip()] = value
+        if cleaned_key.strip() in cleaned_data.keys():
+            cleaned_data[cleaned_key.strip()] += value
+        else:
+            cleaned_data[cleaned_key.strip()] = value
     return cleaned_data
 
 # test={

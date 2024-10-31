@@ -6,6 +6,7 @@ from find_winner import find_winner
 from alternate_find_award import find_award
 from filter_tweets import filter_tweets
 from pickle_preprocess import unpickle_tweets
+import json
 
 if __name__ == "__main__":
     JSON_FILE = "gg2013.json"
@@ -17,6 +18,11 @@ if __name__ == "__main__":
 
     host = find_host(tweets)
     print("hosts:", host)
+
+    json_data= {
+        "Host": host,
+        "award_data": {}
+    }
 
     award_list = find_award(tweets)
     awards_final = []
@@ -37,3 +43,38 @@ if __name__ == "__main__":
         presenter = find_presenters(award_names, winner, tweets)
         print("presenters:", presenter)
 
+    with open("output.txt", "w", encoding="utf-8") as file:
+        for i in range(len(award_list)):
+            award = awards_final[i]
+            print("\n\n")
+            print("AWARD:", award)
+            print("alternative names:", award_list[i])
+            award_names = "(" + "|".join(award_list[i]) + ")"
+            nominees = find_nominees(award_names, tweets)
+            print("nominees:", nominees)
+
+            winner = find_winner(award_names, nominees, tweets)
+            if not winner:
+                continue
+            print("winner:", winner)
+
+            presenter = find_presenters(award_names, winner[0], tweets)
+            print("presenters:", presenter)
+            
+            file.write(f"Award: {award}\n")
+            file.write(f"alternative names: {award_list[i]}\n")
+            file.write(f"Presenters: {presenter}\n")
+            file.write("Nominees: " + ", ".join(f'"{nominee}"' for nominee in nominees) + "\n")
+            file.write(f"Winner: \"{winner}\"\n")
+            
+            json_data["award_data"][award]={
+                "nominees" : nominees,
+                "presenters" : presenter,
+                "winner" : winner
+            }
+    
+    output_file = "result.json"
+    with open(output_file, "w", encoding="utf-8") as json_file:
+        json.dump(json_data, json_file, ensure_ascii=False, indent=4)
+
+    print(f"Data has been written to {output_file}")
