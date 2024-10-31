@@ -2,9 +2,9 @@ from collections import defaultdict
 import re
 
 synonym_map = {
-    "motion picture": "movie",
-    "picture": "movie",
-    "film": "movie",
+    "motion picture": "picture",
+    "movie": "picture",
+    "film": "picture",
     "in a": "-",
     " – ": " - ",
     " — ": " - ",
