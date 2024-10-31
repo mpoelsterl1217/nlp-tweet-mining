@@ -16,7 +16,7 @@ def identify_awards(tweets):
     final_awards = defaultdict(int)
     matcher = Matcher(nlp.vocab)
     
-    '''
+    
     award_pattern1 = [
         {"LOWER": "best"},                     # "best" (case insensitive)
         {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"},  # One or more title-case words (suggesting formality)
@@ -24,19 +24,19 @@ def identify_awards(tweets):
         {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"}# ,   # More formal terms, like role/category/year
     ]
     award_pattern2 = [
-        {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
+        {"LOWER": "best"},
         {"POS": "NOUN", "OP": "+"}# ,    # noun (e.g., "Actress", "Picture")
     ]
     award_pattern3 = [
-        {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
+        {"LOWER": "best"},
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
         {"LOWER": "in a"},
         {"POS": "NOUN", "OP": "+"}
     ]
     award_pattern4 = [
-        {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
+        {"LOWER": "best"},
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
-        {"TEXT": {"REGEX": "^(in|by) a$"}},  
+        {"LOWER": {"IN": ["by a", "in a"]}, "OP": "?"},
         {"POS": "NOUN", "OP": "+"},
         {"TEXT": {"REGEX": "[-–—]"}},
         {"POS": "NOUN", "OP": "+"},
@@ -44,15 +44,15 @@ def identify_awards(tweets):
         {"POS": "NOUN", "OP": "+"}
     ]
     award_pattern5 = [
-        {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
+        {"LOWER": "best"},
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
-        {"TEXT": {"REGEX": "^(in|by) a$"}},
+        {"LOWER": {"IN": ["by a", "in a"]}, "OP": "?"},
         {"POS": "NOUN", "OP": "+"},
         {"TEXT": {"REGEX": "[-–—]"}},
         {"POS": "NOUN", "OP": "+"}
     ]
     award_pattern6 = [
-        {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
+        {"LOWER": "best"},
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
         {"TEXT": {"REGEX": "[-–—]"}},
         {"POS": "NOUN", "OP": "+"},
@@ -60,7 +60,7 @@ def identify_awards(tweets):
         {"POS": "NOUN", "OP": "+"}
     ]
     award_pattern7 = [
-        {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
+        {"LOWER": "best"},
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
         {"TEXT": {"REGEX": "[-–—]"}},
         {"POS": "NOUN", "OP": "+"}
@@ -73,9 +73,9 @@ def identify_awards(tweets):
     matcher.add("AWARD_NAME5", [award_pattern5])
     matcher.add("AWARD_NAME6", [award_pattern6])
     matcher.add("AWARD_NAME7", [award_pattern7])
-    '''
+    
 
-    award_patterns = [
+    '''award_patterns = [
         [
             {"LOWER": "best"},
             {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"},
@@ -95,6 +95,7 @@ def identify_awards(tweets):
     # Add all patterns under a single matcher ID
     for pattern in award_patterns:
         matcher.add("AWARD_NAME", [pattern])
+    '''
 
     for r in regexes:
         regex = r[0:-1]
@@ -109,7 +110,7 @@ def identify_awards(tweets):
         #     match = re.search(regex, tweet[0:-1], re.IGNORECASE)
             if match:
                 potential_award = match.group(g + 1)
-                doc = nlp(tweet.clean_text)
+                # doc = nlp(tweet.clean_text)
                 # doc = nlp(tweet)
                 # award_entities = [ent.text for ent in doc.ents if ent.label_ in {'PROPN'}]
                 potential_award = nlp(potential_award)
@@ -142,7 +143,7 @@ def scoring(name, tweet):
 def find_award(tweets):
     matches=identify_awards(tweets)
     # remove values smaller than 2
-    threshold = 2
+    threshold = 5
     filtered_matches = {key: value for key, value in matches.items() if value >= threshold}
 
     matches_list=[]
