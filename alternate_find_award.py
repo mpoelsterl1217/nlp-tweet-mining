@@ -16,6 +16,7 @@ def identify_awards(tweets):
     final_awards = defaultdict(int)
     matcher = Matcher(nlp.vocab)
     
+    '''
     award_pattern1 = [
         {"LOWER": "best"},                     # "best" (case insensitive)
         {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"},  # One or more title-case words (suggesting formality)
@@ -72,6 +73,28 @@ def identify_awards(tweets):
     matcher.add("AWARD_NAME5", [award_pattern5])
     matcher.add("AWARD_NAME6", [award_pattern6])
     matcher.add("AWARD_NAME7", [award_pattern7])
+    '''
+
+    award_patterns = [
+        [
+            {"LOWER": "best"},
+            {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"},
+            {"TEXT": {"REGEX": "[-–—]?"}},
+            {"IS_ALPHA": True, "IS_TITLE": True, "OP": "*"},
+        ],
+        [
+            {"LOWER": "best"},
+            {"POS": "NOUN", "OP": "+"},
+            {"TEXT": {"REGEX": "^(in|by) a$"}, "OP": "?"},
+            {"POS": "NOUN", "OP": "*"},
+            {"TEXT": {"REGEX": "[-–—]?(/|or)?$"}, "OP": "?"},
+            {"POS": "NOUN", "OP": "*"}
+        ]
+    ]
+
+    # Add all patterns under a single matcher ID
+    for pattern in award_patterns:
+        matcher.add("AWARD_NAME", [pattern])
 
     for r in regexes:
         regex = r[0:-1]

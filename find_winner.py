@@ -50,7 +50,7 @@ def find_winner(award_name, nominees, tweets):
     # largest_keys = [key for key, value in sorted(matches.items(), key=lambda item: item[1], reverse=True)[:top_n]]
 
     # return largest_keys
-    return max(matches, key=matches.get)
+    return [max(matches, key=matches.get)]
 
 # tweets = read_tweet_data("gg2013.json")[0]
 # print(find_winner("best screenplay - motion picture", [], tweets))

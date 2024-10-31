@@ -22,8 +22,8 @@
 (congrats|congratulations) to (.+) for (his|her|its|their|the) [AWARD NAME] nomination(.+)
 (.+) nominated for [AWARD NAME]
 (.+) on (his|her|its|their) [AWARD NAME] nomination(.+)
-was hoping for (.+) to (win|get) [AWARD NAME]
-thought (.+) would (win|get) [AWARD NAME]
+was hoping for (.+) to (win|get) [AWARD NAME](.+)
+thought (.+) would (win|get) [AWARD NAME](.+)
 (.+) (host|hosts|hosted|hosting) this year's (.+) awards(.+)
 (.+) (host|hosts|hosted|hosting) this year's (.+) ceremony(.+)
 (.+) (host|hosts|hosted|hosting) the (.+) awards(.+)
@@ -42,3 +42,7 @@ our co-host (.+)
 (.+)'s co-host (.+)
 (.+) presenting [AWARD NAME](.+)
 (.+) presenting the award for [AWARD NAME](.+)
+(.+) should have (won|gotten) [AWARD NAME](.+)
+(.+) snubbed for [AWARD NAME](.+)
+(.+) was snubbed for [AWARD NAME](.+)
+(.+) deserve(d|s)* [AWARD NAME](.+)
