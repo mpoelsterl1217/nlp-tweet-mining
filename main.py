@@ -46,8 +46,6 @@ if __name__ == "__main__":
             print("nominees:", nominees)
             winner_list = find_winner(award_names, nominees, tweets)
             winner = winner_list[0] if winner_list != [] else None
-            if not winner:
-                continue
             print("winner:", winner)
             presenter = find_presenters(award_names, winner, tweets)
             print("presenters:", presenter)
