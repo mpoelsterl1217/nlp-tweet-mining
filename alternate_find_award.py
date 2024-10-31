@@ -78,6 +78,7 @@ def identify_awards(tweets):
         g = regex[:regex.find("[AWARD NAME]")].count("(.+)")
         regex = regex.replace("[AWARD NAME]", "(.+)")
         regex = regex.replace("(.+)(.+)", "(.+)")
+        regex = re.compile(regex)
         # print(regex, g+1)
         for tweet in tweets:
             match = re.search(regex, tweet.clean_text, re.IGNORECASE)

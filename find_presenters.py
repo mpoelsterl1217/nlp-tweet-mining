@@ -16,6 +16,7 @@ def identify_presenters(award_name, winner, tweets):
     for r in regexes:
         r1 = r.replace("[AWARD NAME]", award_name)[0:-1]
         regex = r1.replace("[WINNER]", winner)
+        regex = re.compile(regex)
         for tweet in tweets:
             match = re.search(regex, tweet.clean_text, re.IGNORECASE)
             if match:
