@@ -23,12 +23,12 @@ if __name__ == "__main__":
     for i in award_list:
         awards_final.append(max(i, key=len))
 
-    for i in range(len(award_list)):
-        award = awards_final[i]
+    for award in award_list:
+        # award = awards_final[i]
         print("\n\n")
         print("AWARD:", award)
-        print("alternative names:", award_list[i])
-        award_names = "(" + "|".join(award_list[i]) + ")"
+        print("alternative names:", award_list[award])
+        award_names = "(" + "|".join(award_list[award]) + ")"
         nominees = find_nominees(award_names, tweets)
         print("nominees:", nominees)
         winner_list = find_winner(award_names, nominees, tweets)

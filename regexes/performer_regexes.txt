@@ -1,0 +1,6 @@
+(.+) (performed|sang) at the (.+)
+excited to see (.+) (perform|sing) at the (.+)
+(.+) will (perform|sing) at the (.+)
+can't wait to watch (.+) (perform|sing) (.+)
+(.+) did a great job (performing|singing) at the (.+)
+(.+) (performing|singing) at the (.+)
