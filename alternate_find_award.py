@@ -30,8 +30,41 @@ def identify_awards(tweets):
     award_pattern3 = [
         {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
-        {"LOWER": "in a"}# ,
+        {"LOWER": "in a"},
+        {"POS": "NOUN", "OP": "+"}
         # {"POS": "PERSON", "OP": "!"}  # Exclude proper nouns (like names) that follow
+    ]
+    award_pattern4 = [
+        {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
+        {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
+        {"LOWER": "(in|by) a"},
+        {"POS": "NOUN", "OP": "+"},
+        {"TEXT": {"REGEX": "[-–—]"}},
+        {"POS": "NOUN", "OP": "+"},
+        {"LOWER": "(/|or)"},
+        {"POS": "NOUN", "OP": "+"}
+    ]
+    award_pattern5 = [
+        {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
+        {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
+        {"LOWER": "(in|by) a"},
+        {"POS": "NOUN", "OP": "+"},
+        {"TEXT": {"REGEX": "[-–—]"}},
+        {"POS": "NOUN", "OP": "+"}
+    ]
+    award_pattern6 = [
+        {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
+        {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
+        {"TEXT": {"REGEX": "[-–—]"}},
+        {"POS": "NOUN", "OP": "+"},
+        {"LOWER": "(/|or)"},
+        {"POS": "NOUN", "OP": "+"}
+    ]
+    award_pattern7 = [
+        {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
+        {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
+        {"TEXT": {"REGEX": "[-–—]"}},
+        {"POS": "NOUN", "OP": "+"}
     ]
 
     # TODO: keep in /
@@ -39,6 +72,10 @@ def identify_awards(tweets):
     matcher.add("AWARD_NAME1", [award_pattern1])
     matcher.add("AWARD_NAME2", [award_pattern2])
     matcher.add("AWARD_NAME3", [award_pattern3])
+    matcher.add("AWARD_NAME4", [award_pattern4])
+    matcher.add("AWARD_NAME5", [award_pattern5])
+    matcher.add("AWARD_NAME6", [award_pattern6])
+    matcher.add("AWARD_NAME7", [award_pattern7])
 
     for r in regexes:
         regex = r[0:-1]
