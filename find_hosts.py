@@ -3,6 +3,7 @@ import spacy
 from collections import defaultdict
 from reader import read_tweet_data
 from tweet import Tweet
+from aggregate_similarities import aggregate_by_similarities
 
 def identify_host(tweets):
     with open('regexes/host_regexes.txt', 'r') as file:
@@ -37,6 +38,17 @@ def scoring(name, tweet):
         return 5
     return 1
 
+
+def find_host(award_name):
+    matches = identify_host(award_name)
+    matches = aggregate_by_similarities(matches)
+
+    # only get the largest one
+    top_n = 2
+    top_n = min(top_n, len(matches))
+    largest_keys = [key for key, value in sorted(matches.items(), key=lambda item: item[1], reverse=True)[:top_n]]
+
+    return largest_keys
 
 tweets = read_tweet_data("gg2013.json")[0]
 identify_host(tweets)

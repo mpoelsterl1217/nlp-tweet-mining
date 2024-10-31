@@ -3,6 +3,7 @@ import spacy
 from collections import defaultdict
 from reader import read_tweet_data
 from tweet import Tweet
+from aggregate_similarities import aggregate_by_similarities
 
 # TODO: we'll need to run this on many versions of an award name and aggregate
 def identify_winner(award_name, nominees, tweets):
@@ -38,6 +39,16 @@ def scoring(name, tweet):
         return 5
     return 1
 
+def find_winner(award_name, nominees, tweets):
+    matches = identify_winner(award_name, nominees, tweets)
+    matches = aggregate_by_similarities(matches)
+
+    # only get the largest one
+    top_n = 1
+    top_n = min(top_n, len(matches))
+    largest_keys = [key for key, value in sorted(matches.items(), key=lambda item: item[1], reverse=True)[:top_n]]
+
+    return largest_keys
 
 tweets = read_tweet_data("gg2013.json")[0]
-identify_winner("best screenplay - motion picture", [], tweets)
+print(find_winner("best screenplay - motion picture", [], tweets))

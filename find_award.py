@@ -47,7 +47,7 @@ for tweet in tweets.values():
         span = doc[start:end]  # The matched span
     
         # Check the token after the punctuation
-            # Find the part after the hyphen
+        # Find the part after the hyphen
         after_hyphen = None
         for token in doc[start:end]:
             if token.text in ['-','--']:  # Find the hyphen or dash
