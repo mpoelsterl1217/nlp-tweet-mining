@@ -1,14 +1,14 @@
 from fuzzywuzzy import fuzz
 
-
 class IMDB:
 
     people_by_nconst = {}
     originalTitle_by_tconst = {}
     primaryTitle_by_tconst = {}
+    writers_by_tconst = {}
+    directors_by_tconst = {}
 
     def __init__(self, awards_year):
-        
         with open("imdb_data/name.basics.tsv") as file:
             next(file)
             for line in file:
@@ -60,45 +60,99 @@ class IMDB:
 
                 self.primaryTitle_by_tconst[tconst] = primaryTitle
                 self.originalTitle_by_tconst[tconst] = originalTitle
+
+        with open("imdb_data/title.crew.tsv") as file:
+            next(file)
+
+            for line in file:
+                parts = line.split("\t")
+                tconst = parts[0]
+                directors = parts[1].split(",")
+                writers = parts[2].split(",")
+
+                # We can ignore this title if the tconst is not in our other dictionaries
+                if self.originalTitle_by_tconst.get(tconst) == None and self.primaryTitle_by_tconst.get(tconst) == None:
+                    continue
+
+                self.directors_by_tconst[tconst] = directors
+                self.writers_by_tconst[tconst] = writers
+
                 
-
-
     def is_person_fuzzy(self, maybe_person: str) -> bool:
-        threshold = 90
-        found_person_fuzzy = False
-
-        for person in self.people_by_nconst.values():
-            '''
-            if maybe_person in person:
-                found_person_fuzzy = True
-                print(f"{maybe_person} is a substring of {person}")
-                break
-            '''
-            if fuzz.ratio(maybe_person, person) >= threshold:
-                found_person_fuzzy = True
-                print(f"{maybe_person} matches {person}, ratio: {fuzz.partial_ratio(maybe_person, person)}")
-                break
-        
-        return found_person_fuzzy
+        return self._find_person_fuzzy(maybe_person) != []
 
     def is_title_fuzzy(self, maybe_title: str) -> bool:
-        threshold = 90
+        return self._find_title_fuzzy(maybe_title) != []
 
-        found_title_fuzzy = False
-
-        for primaryTitle in self.primaryTitle_by_tconst.values():
-            if fuzz.ratio(maybe_title, primaryTitle) >= threshold:
-                found_title_fuzzy = True
-                break
-
-        if not found_title_fuzzy:
-            for originalTitle in self.originalTitle_by_tconst.values():
-                if fuzz.ratio(maybe_title, originalTitle) >= threshold:
-                    found_title_fuzzy = True
-                    break
-
-        return found_title_fuzzy
+    def _find_person_fuzzy(self, maybe_person: str):
+        nconsts = []
+        for nconst in self.people_by_nconst.keys():
+            person = self.people_by_nconst[nconst]
+            if self._fuzzy_person_match(maybe_person, person):
+                print(f"{maybe_person} matches {person} ({nconst})")
+                nconsts.append(nconst)
         
+        return nconsts
+
+    def _find_title_fuzzy(self, maybe_title: str):
+        tconsts = []
+        for tconst in self.primaryTitle_by_tconst.keys():
+            title = self.primaryTitle_by_tconst[tconst]
+            if self._fuzzy_title_match(maybe_title, title):
+                print(f"{maybe_title} matches {title}({tconst})")
+                tconsts.append(tconst)
+
+        for tconst in self.originalTitle_by_tconst.keys():
+            title = self.originalTitle_by_tconst[tconst]
+            if self._fuzzy_title_match(maybe_title, title):
+                print(f"{maybe_title} matches {title} ({tconst})")
+                tconsts.append(tconst)
+        
+        return tconsts
+
+
+    def _fuzzy_people_match(self, p1, p2):
+        threshold = 90
+        return fuzz.ratio(p1, p2) >= threshold or p1 in p2
+    
+    def _fuzzy_title_match(self, t1, t2):
+        threshold = 90
+        return fuzz.ratio(t1, t2) >= threshold or t1 in t2
+
+
+    def title_is_directed_by(self, title, maybe_director):
+        tconsts = self._find_title_fuzzy(title)
+        if tconsts == []:
+            return False
+
+        for tconst in tconsts:
+            directors = []
+            if self.directors_by_tconst.get(tconst) != None:
+                directors = [self.people_by_nconst[nconst] for nconst in self.directors_by_tconst[tconst] if self.people_by_nconst.get(nconst) != None]
+            print(f"Title {tconst} is directed by {directors}")
+            for director in directors:
+                if self._fuzzy_people_match(maybe_director, director):
+                    return True
+                print(f"{maybe_director} and {director} do not match")
+            
+        return False
+
+    def title_is_written_by(self, title, maybe_writer):
+        tconsts = self._find_title_fuzzy(title)
+        if tconsts == []:
+            return False
+
+        for tconst in tconsts:
+            writers = []
+            if self.writers_by_tconst.get(tconst) != None:
+                writers = [self.people_by_nconst[nconst] for nconst in self.writers_by_tconst[tconst] if self.people_by_nconst.get(nconst) != None]
+            for writer in writers:
+                if self._fuzzy_people_match(maybe_writer, writer):
+                    return True
+
+        return False
+
+    
         
 if __name__ == "__main__":
 
