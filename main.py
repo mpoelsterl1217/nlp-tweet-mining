@@ -35,49 +35,64 @@ if __name__ == "__main__":
     for i in award_list:
         awards_final.append(max(i, key=len))
 
-    for award in award_list:
-        # award = awards_final[i]
-        print("\n\n")
-        print("AWARD:", award)
-        print("alternative names:", award_list[award])
-        award_names = "(" + "|".join(award_list[award]) + ")"
-        nominees = find_nominees(award_names, tweets)
-        print("nominees:", nominees)
-        winner_list = find_winner(award_names, nominees, tweets)
-        winner = winner_list[0] if winner_list != [] else None
-        print("winner:", winner)
-        presenter = find_presenters(award_names, winner, tweets)
-        print("presenters:", presenter)
-
     with open("output.txt", "w", encoding="utf-8") as file:
-        for i in range(len(award_list)):
-            award = awards_final[i]
+        for award in award_list:
+            # award = awards_final[i]
             print("\n\n")
             print("AWARD:", award)
-            print("alternative names:", award_list[i])
-            award_names = "(" + "|".join(award_list[i]) + ")"
+            print("alternative names:", award_list[award])
+            award_names = "(" + "|".join(award_list[award]) + ")"
             nominees = find_nominees(award_names, tweets)
             print("nominees:", nominees)
-
-            winner = find_winner(award_names, nominees, tweets)
-            if not winner:
-                continue
+            winner_list = find_winner(award_names, nominees, tweets)
+            winner = winner_list[0] if winner_list != [] else None
             print("winner:", winner)
-
-            presenter = find_presenters(award_names, winner[0], tweets)
+            presenter = find_presenters(award_names, winner, tweets)
             print("presenters:", presenter)
-            
+
             file.write(f"Award: {award}\n")
-            file.write(f"alternative names: {award_list[i]}\n")
+            file.write(f"alternative names: {award_list[award]}\n")
             file.write(f"Presenters: {presenter}\n")
-            file.write("Nominees: " + ", ".join(f'"{nominee}"' for nominee in nominees) + "\n")
-            file.write(f"Winner: \"{winner}\"\n")
+            file.write(f"Nominees: {nominees}\n")
+            file.write(f"Winner: {winner}\n")
             
             json_data["award_data"][award]={
                 "nominees" : nominees,
                 "presenters" : presenter,
                 "winner" : winner
             }
+        file.write(f"performers: \"{performers}\"\n")
+
+    # with open("output.txt", "w", encoding="utf-8") as file:
+    #     for i in range(len(award_list)):
+    #         award = awards_final[i]
+    #         print("\n\n")
+    #         print("AWARD:", award)
+    #         print("alternative names:", award_list[i])
+    #         award_names = "(" + "|".join(award_list[i]) + ")"
+    #         nominees = find_nominees(award_names, tweets)
+    #         print("nominees:", nominees)
+
+    #         winner = find_winner(award_names, nominees, tweets)
+    #         if not winner:
+    #             continue
+    #         print("winner:", winner)
+
+    #         presenter = find_presenters(award_names, winner[0], tweets)
+    #         print("presenters:", presenter)
+            
+    #         file.write(f"Award: {award}\n")
+    #         file.write(f"alternative names: {award_list[i]}\n")
+    #         file.write(f"Presenters: {presenter}\n")
+    #         file.write("Nominees: " + ", ".join(f'"{nominee}"' for nominee in nominees) + "\n")
+    #         file.write(f"Winner: \"{winner}\"\n")
+            
+    #         json_data["award_data"][award]={
+    #             "nominees" : nominees,
+    #             "presenters" : presenter,
+    #             "winner" : winner
+    #         }
+    #     file.write(f"performers: \"{performers}\"\n")
     
     output_file = "result.json"
     with open(output_file, "w", encoding="utf-8") as json_file:
