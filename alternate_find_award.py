@@ -5,6 +5,7 @@ from collections import defaultdict
 from reader import read_tweet_data
 from tweet import Tweet
 from aggregate_award_names import aggregate_names
+from aggregate_by_synonym import aggregate_awards
 
 def identify_awards(tweets):
 
@@ -32,7 +33,7 @@ def identify_awards(tweets):
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
         {"LOWER": {"IN": ["by", "in"]}, "OP": "?"},
         {"LOWER": "a", "OP": "?"},
-        {"POS": "NOUN", "OP": "+"}
+        {"POS": "NOUN", "OP": "?"}
     ]
     award_pattern4 = [
         {"LOWER": "best"},
@@ -43,14 +44,14 @@ def identify_awards(tweets):
         {"TEXT": {"REGEX": "[-–—]"}},
         {"POS": "NOUN", "OP": "+"},
         {"LOWER": {"IN": ["/", "or"]}, "OP": "?"},
-        {"POS": "NOUN", "OP": "+"}
+        {"POS": "NOUN", "OP": "?"}
     ]
     award_pattern5 = [
         {"LOWER": "best"},
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
         {"LOWER": {"IN": ["by", "in"]}, "OP": "?"},
         {"LOWER": "a", "OP": "?"},
-        {"POS": "NOUN", "OP": "+"},
+        {"POS": "NOUN", "OP": "?"},
         {"TEXT": {"REGEX": "[-–—]"}},
         {"POS": "NOUN", "OP": "+"}
     ]
@@ -60,7 +61,7 @@ def identify_awards(tweets):
         {"TEXT": {"REGEX": "[-–—]"}},
         {"POS": "NOUN", "OP": "+"},
         {"LOWER": {"IN": ["/", "or"]}, "OP": "?"},
-        {"POS": "NOUN", "OP": "+"}
+        {"POS": "NOUN", "OP": "?"}
     ]
     award_pattern7 = [
         {"LOWER": "best"},
@@ -141,13 +142,14 @@ def scoring(name, tweet):
 def find_award(tweets):
     matches=identify_awards(tweets)
     # remove values smaller than 2
-    threshold = 5
+    threshold = 2
     filtered_matches = {key: value for key, value in matches.items() if value >= threshold}
 
-    matches_list=[]
-    for key, value in filtered_matches.items():
-        matches_list.append(key)
-    aggregate_award = aggregate_names(matches_list)
+    # matches_list=[]
+    # for key, value in filtered_matches.items():
+    #     matches_list.append(key)
+    # aggregate_award = aggregate_names(matches_list)
+    aggregate_award = aggregate_awards(filtered_matches.keys())
 
     return aggregate_award
 

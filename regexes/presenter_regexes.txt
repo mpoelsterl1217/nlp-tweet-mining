@@ -6,3 +6,5 @@
 (.+) (present|presents|presented|hand|hands|give|gives|handed|gave) [WINNER] with [AWARD NAME](.+)
 (.+) presenting [AWARD NAME](.+)
 (.+) presenting the award for [AWARD NAME](.+)
+(.+) announce the nominees for [AWARD NAME](.+)
+(.+) announce the winner for [AWARD NAME](.+)

@@ -14,8 +14,9 @@ def identify_presenters(award_name, winner, tweets):
     nlp = spacy.load("en_core_web_sm")
     matches = defaultdict(int)
     for r in regexes:
-        r1 = r.replace("[AWARD NAME]", award_name)[0:-1]
-        regex = r1.replace("[WINNER]", winner)
+        regex = r.replace("[AWARD NAME]", award_name)[0:-1]
+        if winner:
+            regex = regex.replace("[WINNER]", winner)
         regex = re.compile(regex, re.IGNORECASE)
         for tweet in tweets:
             match = re.search(regex, tweet.clean_text)
