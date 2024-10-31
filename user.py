@@ -1,4 +1,4 @@
-
+from typing import List
 
 class User:
     screen_name: str
