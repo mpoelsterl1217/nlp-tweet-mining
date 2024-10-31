@@ -59,11 +59,11 @@ def read_tweet_data(json_file: str):
     tweets = list(filter(lambda tweet: tweet.clean_text != "", tweets))
 
     ## remove non-english tweets
-    print(len(tweets))
-    for tweet in tweets:
-        if not preprocess.is_english_text(tweet.clean_text):
-            tweets.remove(tweet)
-    print(len(tweets))
+    # print(len(tweets))
+    # for tweet in tweets:
+    #     if not preprocess.is_english_text(tweet.clean_text):
+    #         tweets.remove(tweet)
+    # print(len(tweets))
     
     return tweets
 
