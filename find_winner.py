@@ -50,5 +50,5 @@ def find_winner(award_name, nominees, tweets):
 
     return largest_keys
 
-tweets = read_tweet_data("gg2013.json")[0]
-print(find_winner("best screenplay - motion picture", [], tweets))
+# tweets = read_tweet_data("gg2013.json")[0]
+# print(find_winner("best screenplay - motion picture", [], tweets))

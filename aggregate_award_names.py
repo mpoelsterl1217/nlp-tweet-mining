@@ -28,10 +28,6 @@ def contains_all(name1, group):
     
     newText=extract_keywords(group)
     for award, keywords in newText.items():
-        # if name1=="Best actress - drama":
-        #     print(Name1_keyword)
-        #     print(keywords)
-        #     print(not (set(keywords).issubset(set(Name1_keyword)) or set(Name1_keyword).issubset(set(keywords))))
         if not (set(keywords).issubset(set(Name1_keyword)) or set(Name1_keyword).issubset(set(keywords))):
             return False
         

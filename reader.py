@@ -28,8 +28,8 @@ def read_tweet_data(json_file: str):
     return (tweets, users)
 
 
-if __name__ == "__main__":
-    JSON_FILE = "gg2013.json"
+# if __name__ == "__main__":
+#     JSON_FILE = "gg2013.json"
 
-    tweets, users = read_tweet_data(JSON_FILE)
+#     tweets, users = read_tweet_data(JSON_FILE)
     

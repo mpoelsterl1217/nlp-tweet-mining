@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import re
 import spacy
 from spacy.matcher import Matcher
@@ -20,15 +19,13 @@ def identify_awards(tweets):
         {"LOWER": "best"},                     # "best" (case insensitive)
         {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"},  # One or more title-case words (suggesting formality)
         {"TEXT": {"REGEX": "[-–—]"}},                # Punctuation, like "--" or "-"
-<<<<<<< HEAD
         {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"}# ,   # More formal terms, like role/category/year
         # {"POS": "PERSON", "OP": "!"}  # Exclude proper nouns (like names) that follow
     ]
     award_pattern2 = [
         {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
-        {"POS": "NOUN", "OP": "+"}# ,    # noun (e.g., "Actress", "Picture")
+        {"POS": "NOUN", "OP": "+"}, # ,    # noun (e.g., "Actress", "Picture")
         # {"POS": "PERSON", "OP": "!"}  # Exclude proper nouns (like names) that follow
-=======
         {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"},   # More formal terms, like role/category/year
         {"POS": "PROPN", "OP": "!"}  # Exclude proper nouns (like names) that follow
     ]
@@ -36,18 +33,14 @@ def identify_awards(tweets):
         {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
         {"POS": "PROPN", "OP": "!"}  # Exclude proper nouns (like names) that follow
->>>>>>> d66c776750a210692b40166a68c43e80dea15877
     ]
     award_pattern3 = [
         {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
-<<<<<<< HEAD
-        {"LOWER": "in a"}# ,
+        {"LOWER": "in a"}, # ,
         # {"POS": "PERSON", "OP": "!"}  # Exclude proper nouns (like names) that follow
-=======
         {"LOWER": "in a"},
         {"POS": "PROPN", "OP": "!"}  # Exclude proper nouns (like names) that follow
->>>>>>> d66c776750a210692b40166a68c43e80dea15877
     ]
 
     # TODO: keep in /
@@ -103,7 +96,6 @@ tweets = read_tweet_data("gg2013.json")[0]
 # with open('experiments/best_director_award_experiment.txt', 'r') as file:
 #         print("reading...")
 #         tweets = file.readlines()
-=======
 import re
 import spacy
 from spacy.matcher import Matcher
@@ -125,15 +117,13 @@ def identify_awards(tweets):
         {"LOWER": "best"},                     # "best" (case insensitive)
         {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"},  # One or more title-case words (suggesting formality)
         {"TEXT": {"REGEX": "[-–—]"}},                # Punctuation, like "--" or "-"
-<<<<<<< HEAD
         {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"}# ,   # More formal terms, like role/category/year
         # {"POS": "PERSON", "OP": "!"}  # Exclude proper nouns (like names) that follow
     ]
     award_pattern2 = [
         {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
-        {"POS": "NOUN", "OP": "+"}# ,    # noun (e.g., "Actress", "Picture")
+        {"POS": "NOUN", "OP": "+"}, # ,    # noun (e.g., "Actress", "Picture")
         # {"POS": "PERSON", "OP": "!"}  # Exclude proper nouns (like names) that follow
-=======
         {"IS_ALPHA": True, "IS_TITLE": True, "OP": "+"},   # More formal terms, like role/category/year
         {"POS": "PROPN", "OP": "!"}  # Exclude proper nouns (like names) that follow
     ]
@@ -141,18 +131,14 @@ def identify_awards(tweets):
         {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
         {"POS": "PROPN", "OP": "!"}  # Exclude proper nouns (like names) that follow
->>>>>>> d66c776750a210692b40166a68c43e80dea15877
     ]
     award_pattern3 = [
         {"LOWER": "best"},    # adjective (e.g., "Best", "Outstanding")
         {"POS": "NOUN", "OP": "+"},    # noun (e.g., "Actress", "Picture")
-<<<<<<< HEAD
-        {"LOWER": "in a"}# ,
+        {"LOWER": "in a"}, # ,
         # {"POS": "PERSON", "OP": "!"}  # Exclude proper nouns (like names) that follow
-=======
         {"LOWER": "in a"},
         {"POS": "PROPN", "OP": "!"}  # Exclude proper nouns (like names) that follow
->>>>>>> d66c776750a210692b40166a68c43e80dea15877
     ]
 
     # TODO: keep in /
@@ -208,5 +194,4 @@ tweets = read_tweet_data("gg2013.json")[0]
 # with open('experiments/best_director_award_experiment.txt', 'r') as file:
 #         print("reading...")
 #         tweets = file.readlines()
->>>>>>> fd1f228872e8cd119f50b888feede1da6016f7c2
 identify_awards(tweets)

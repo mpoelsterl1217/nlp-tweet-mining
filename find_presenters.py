@@ -51,5 +51,5 @@ def find_presenters(award_name, winner, tweets):
 
     return largest_keys
 
-tweets = read_tweet_data("gg2013.json")[0]
-identify_presenters("best screenplay - motion picture", "django unchained", tweets)
+# tweets = read_tweet_data("gg2013.json")[0]
+# identify_presenters("best screenplay - motion picture", "django unchained", tweets)

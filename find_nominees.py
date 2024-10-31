@@ -49,5 +49,5 @@ def find_nominees(award_name, tweets):
 
     return largest_keys
 
-tweets = read_tweet_data("gg2013.json")[0]
-find_nominees("best actress", tweets)
+# tweets = read_tweet_data("gg2013.json")[0]
+# find_nominees("best actress", tweets)
