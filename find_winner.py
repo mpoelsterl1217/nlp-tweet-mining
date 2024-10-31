@@ -56,7 +56,13 @@ def find_winner(award_name, nominees, tweets):
     # return largest_keys
     if len(matches) == 0:
         return []
-    return [max(matches, key=matches.get)]
+    else:
+        filtered_matches = {k: v for k, v in matches.items() if k != "Golden Globes" or "Golden Globe"}
+        winner = max(filtered_matches, key=filtered_matches.get)
+        if winner in "Golden Globes" or "Golden Globe":
+            winner = winner.replace("Golden Globes", "").strip()
+            winner = winner.replace("Golden Globe", "").strip()
+        return [winner]
 
 # tweets = read_tweet_data("gg2013.json")[0]
 # print(find_winner("best screenplay - motion picture", [], tweets))

@@ -142,7 +142,7 @@ def scoring(name, tweet):
 def find_award(tweets):
     matches=identify_awards(tweets)
     # remove values smaller than 2
-    threshold = 2
+    threshold = 5
     filtered_matches = {key: value for key, value in matches.items() if value >= threshold}
 
     # matches_list=[]
