@@ -1,0 +1,212 @@
+Award: best miniseries
+alternative names: ['best mini-series', 'best miniseries']
+Presenters: []
+Nominees: ['Big Ang', 'Jessica Lange', 'Jodie Foster']
+Winner: Game Change
+Award: best t-mobile commercial
+alternative names: ['best t-mobile commercial']
+Presenters: []
+Nominees: ['Catherine Zeta Jones', 'RT Bill Dixonish']
+Winner: Catherine Zeta Jones
+Award: best picture
+alternative names: ['best picture']
+Presenters: []
+Nominees: ['Best Picture', 'Skyfall', 'Amour', 'Django']
+Winner: Les Miserables
+Award: best actress
+alternative names: ['best actress']
+Presenters: ['Lea Michele', 'Nathan Fillion']
+Nominees: ['Rachel Weisz', 'Kim Kardashian', 'Connie Britton']
+Winner: Jennifer Lawrence
+Award: best director
+alternative names: ['best director']
+Presenters: ['Halle Berry']
+Nominees: ['Ben Affleck', 'Ang Lee']
+Winner: Ben Affleck
+Award: best song
+alternative names: ['best song']
+Presenters: []
+Nominees: ['Black Coffins']
+Winner: Watch Adele
+Award: best picture - drama
+alternative names: ['best motion picture - drama']
+Presenters: []
+Nominees: ['Clinton', 'Lincoln']
+Winner: Clinton
+Award: best actress - miniseries/tv
+alternative names: ['best actress in a mini-series/tv']
+Presenters: []
+Nominees: []
+Winner: Julianne Moore
+Award: best actor
+alternative names: ['best actor']
+Presenters: []
+Nominees: ['ANDREW LINCOLN']
+Winner: Hugh Jackman
+Award: best tv series
+alternative names: ['best tv series']
+Presenters: ['Jay Leno', 'Jimmy Fallon']
+Nominees: []
+Winner: Damien Lewis
+Award: best sound
+alternative names: ['best sound']
+Presenters: []
+Nominees: []
+Winner: None
+Award: best speech
+alternative names: ['best speech']
+Presenters: []
+Nominees: []
+Winner: RT SRuthie
+Award: best performance by
+alternative names: ['best performance by']
+Presenters: []
+Nominees: []
+Winner: Anne Hathaway
+Award: best actor - tv
+alternative names: ['best actor in a tv']
+Presenters: []
+Nominees: []
+Winner: Don Cheadle
+Award: best actor - miniseries
+alternative names: ['best actor in a miniseries']
+Presenters: []
+Nominees: []
+Winner: Kevin Costner
+Award: best actress -
+alternative names: ['best actress in a']
+Presenters: ['Lea Michele', 'Nathan Fillion']
+Nominees: []
+Winner: Jennifer Lawrence
+Award: best actress - motion
+alternative names: ['best actress in a motion']
+Presenters: []
+Nominees: []
+Winner: Jessica Chastain
+Award: best screenplay
+alternative names: ['best screenplay']
+Presenters: ['Robert Pattinson', 'Amanda Seyfried']
+Nominees: []
+Winner: Quentin Tarantino
+Award: best screenplay -
+alternative names: ['best screenplay in a']
+Presenters: []
+Nominees: []
+Winner: None
+Award: best actor -
+alternative names: ['best actor in a']
+Presenters: []
+Nominees: []
+Winner: Hugh Jackman
+Award: best actor tv series - comedy or
+alternative names: ['best actor tv series - comedy or']
+Presenters: []
+Nominees: []
+Winner: None
+Award: best actress - tv
+alternative names: ['best actress in a tv']
+Presenters: ['Lea Michele', 'Nathan Fillion']
+Nominees: []
+Winner: Claire Danes
+Award: best actress - comedy
+alternative names: ['best actress in a comedy']
+Presenters: []
+Nominees: ['Comedy']
+Winner: Jennifer Lawrence
+Award: best director - picture
+alternative names: ['best director - motion picture']
+Presenters: []
+Nominees: []
+Winner: Ben Affleck
+Award: best tv comedy
+alternative names: ['best tv comedy']
+Presenters: []
+Nominees: ['RT The Advocate Mag', 'Modern Family']
+Winner: Lena Dunham
+Award: best actor - motion
+alternative names: ['best actor in a motion']
+Presenters: []
+Nominees: []
+Winner: Hugh Jackman
+Award: best speech award
+alternative names: ['best speech award']
+Presenters: []
+Nominees: []
+Winner: None
+Award: best hair
+alternative names: ['best hair']
+Presenters: []
+Nominees: []
+Winner: None
+Award: best picture drama
+alternative names: ['best motion picture drama']
+Presenters: []
+Nominees: []
+Winner: Ben Affleck's
+Award: best tv miniseries
+alternative names: ['best tv mini-series']
+Presenters: []
+Nominees: []
+Winner: None
+Award: best actress - miniseries
+alternative names: ['best actress in a miniseries']
+Presenters: []
+Nominees: []
+Winner: Julianne Moore
+Award: best tv drama actor
+alternative names: ['best tv drama actor']
+Presenters: []
+Nominees: []
+Winner: None
+Award: best humans
+alternative names: ['best humans']
+Presenters: []
+Nominees: []
+Winner: None
+Award: best television drama
+alternative names: ['best television drama']
+Presenters: []
+Nominees: []
+Winner: Showtime
+Award: best tv drama series
+alternative names: ['best tv drama series']
+Presenters: []
+Nominees: []
+Winner: 
+Award: best use
+alternative names: ['best use']
+Presenters: []
+Nominees: []
+Winner: None
+Award: best editing
+alternative names: ['best editing']
+Presenters: []
+Nominees: []
+Winner: None
+Award: best tv drama actress
+alternative names: ['best tv drama actress']
+Presenters: []
+Nominees: []
+Winner: Claire Danes
+Award: best actress tv
+alternative names: ['best actress tv']
+Presenters: []
+Nominees: []
+Winner: Claire Danes
+Award: best picture - comedy
+alternative names: ['best motion picture - comedy']
+Presenters: []
+Nominees: []
+Winner: Les Miserables
+Award: best actress - drama
+alternative names: ['best actress - drama']
+Presenters: []
+Nominees: []
+Winner: Jessica Chastain
+Award: best actor - drama
+alternative names: ['best actor in a drama']
+Presenters: []
+Nominees: []
+Winner: Daniel Day-Lewis
+performers: "['Anne Hathaway', 'Official Adele']"
+hosts: "['Tina Fey', 'Amy Poehler']"

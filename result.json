@@ -1,0 +1,270 @@
+{
+    "Host": [
+        "Tina Fey",
+        "Amy Poehler"
+    ],
+    "Performers": [
+        "Anne Hathaway",
+        "Official Adele"
+    ],
+    "award_data": {
+        "best miniseries": {
+            "nominees": [
+                "Big Ang",
+                "Jessica Lange",
+                "Jodie Foster"
+            ],
+            "presenters": [],
+            "winner": "Game Change"
+        },
+        "best t-mobile commercial": {
+            "nominees": [
+                "Catherine Zeta Jones",
+                "RT Bill Dixonish"
+            ],
+            "presenters": [],
+            "winner": "Catherine Zeta Jones"
+        },
+        "best picture": {
+            "nominees": [
+                "Best Picture",
+                "Skyfall",
+                "Amour",
+                "Django"
+            ],
+            "presenters": [],
+            "winner": "Les Miserables"
+        },
+        "best actress": {
+            "nominees": [
+                "Rachel Weisz",
+                "Kim Kardashian",
+                "Connie Britton"
+            ],
+            "presenters": [
+                "Lea Michele",
+                "Nathan Fillion"
+            ],
+            "winner": "Jennifer Lawrence"
+        },
+        "best director": {
+            "nominees": [
+                "Ben Affleck",
+                "Ang Lee"
+            ],
+            "presenters": [
+                "Halle Berry"
+            ],
+            "winner": "Ben Affleck"
+        },
+        "best song": {
+            "nominees": [
+                "Black Coffins"
+            ],
+            "presenters": [],
+            "winner": "Watch Adele"
+        },
+        "best picture - drama": {
+            "nominees": [
+                "Clinton",
+                "Lincoln"
+            ],
+            "presenters": [],
+            "winner": "Clinton"
+        },
+        "best actress - miniseries/tv": {
+            "nominees": [],
+            "presenters": [],
+            "winner": "Julianne Moore"
+        },
+        "best actor": {
+            "nominees": [
+                "ANDREW LINCOLN"
+            ],
+            "presenters": [],
+            "winner": "Hugh Jackman"
+        },
+        "best tv series": {
+            "nominees": [],
+            "presenters": [
+                "Jay Leno",
+                "Jimmy Fallon"
+            ],
+            "winner": "Damien Lewis"
+        },
+        "best sound": {
+            "nominees": [],
+            "presenters": [],
+            "winner": null
+        },
+        "best speech": {
+            "nominees": [],
+            "presenters": [],
+            "winner": "RT SRuthie"
+        },
+        "best performance by": {
+            "nominees": [],
+            "presenters": [],
+            "winner": "Anne Hathaway"
+        },
+        "best actor - tv": {
+            "nominees": [],
+            "presenters": [],
+            "winner": "Don Cheadle"
+        },
+        "best actor - miniseries": {
+            "nominees": [],
+            "presenters": [],
+            "winner": "Kevin Costner"
+        },
+        "best actress -": {
+            "nominees": [],
+            "presenters": [
+                "Lea Michele",
+                "Nathan Fillion"
+            ],
+            "winner": "Jennifer Lawrence"
+        },
+        "best actress - motion": {
+            "nominees": [],
+            "presenters": [],
+            "winner": "Jessica Chastain"
+        },
+        "best screenplay": {
+            "nominees": [],
+            "presenters": [
+                "Robert Pattinson",
+                "Amanda Seyfried"
+            ],
+            "winner": "Quentin Tarantino"
+        },
+        "best screenplay -": {
+            "nominees": [],
+            "presenters": [],
+            "winner": null
+        },
+        "best actor -": {
+            "nominees": [],
+            "presenters": [],
+            "winner": "Hugh Jackman"
+        },
+        "best actor tv series - comedy or": {
+            "nominees": [],
+            "presenters": [],
+            "winner": null
+        },
+        "best actress - tv": {
+            "nominees": [],
+            "presenters": [
+                "Lea Michele",
+                "Nathan Fillion"
+            ],
+            "winner": "Claire Danes"
+        },
+        "best actress - comedy": {
+            "nominees": [
+                "Comedy"
+            ],
+            "presenters": [],
+            "winner": "Jennifer Lawrence"
+        },
+        "best director - picture": {
+            "nominees": [],
+            "presenters": [],
+            "winner": "Ben Affleck"
+        },
+        "best tv comedy": {
+            "nominees": [
+                "RT The Advocate Mag",
+                "Modern Family"
+            ],
+            "presenters": [],
+            "winner": "Lena Dunham"
+        },
+        "best actor - motion": {
+            "nominees": [],
+            "presenters": [],
+            "winner": "Hugh Jackman"
+        },
+        "best speech award": {
+            "nominees": [],
+            "presenters": [],
+            "winner": null
+        },
+        "best hair": {
+            "nominees": [],
+            "presenters": [],
+            "winner": null
+        },
+        "best picture drama": {
+            "nominees": [],
+            "presenters": [],
+            "winner": "Ben Affleck's"
+        },
+        "best tv miniseries": {
+            "nominees": [],
+            "presenters": [],
+            "winner": null
+        },
+        "best actress - miniseries": {
+            "nominees": [],
+            "presenters": [],
+            "winner": "Julianne Moore"
+        },
+        "best tv drama actor": {
+            "nominees": [],
+            "presenters": [],
+            "winner": null
+        },
+        "best humans": {
+            "nominees": [],
+            "presenters": [],
+            "winner": null
+        },
+        "best television drama": {
+            "nominees": [],
+            "presenters": [],
+            "winner": "Showtime"
+        },
+        "best tv drama series": {
+            "nominees": [],
+            "presenters": [],
+            "winner": ""
+        },
+        "best use": {
+            "nominees": [],
+            "presenters": [],
+            "winner": null
+        },
+        "best editing": {
+            "nominees": [],
+            "presenters": [],
+            "winner": null
+        },
+        "best tv drama actress": {
+            "nominees": [],
+            "presenters": [],
+            "winner": "Claire Danes"
+        },
+        "best actress tv": {
+            "nominees": [],
+            "presenters": [],
+            "winner": "Claire Danes"
+        },
+        "best picture - comedy": {
+            "nominees": [],
+            "presenters": [],
+            "winner": "Les Miserables"
+        },
+        "best actress - drama": {
+            "nominees": [],
+            "presenters": [],
+            "winner": "Jessica Chastain"
+        },
+        "best actor - drama": {
+            "nominees": [],
+            "presenters": [],
+            "winner": "Daniel Day-Lewis"
+        }
+    }
+}
