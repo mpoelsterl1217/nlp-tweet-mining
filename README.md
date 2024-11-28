@@ -9,8 +9,7 @@ Our code identifies the hosts and performers, along with award names, presenters
 
 The output of json file is result.json. The output of txt file is output.txt. You also can check the result in terminal which should also contain the list of candidates.
 
-I don't think you need specify the python version, but if you can't run you can try Python 3.11.5
-Yes, you need to download some models like spacy or NLTK, but it should be in requirements.txt
+You will need to download spacy's en_core_web_sm model. The environment set up has been tested with Python 3.12.4
 
 Our program takes lots of time to run and get the result. Please wait a moment.
 

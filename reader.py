@@ -3,7 +3,6 @@ from tweet import Tweet
 import preprocess
 from collections import defaultdict
 import re
-import datetime
 
 def read_tweet_data(json_file: str):
     tweets = []
